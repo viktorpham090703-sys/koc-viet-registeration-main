@@ -49,24 +49,32 @@ export function ContactRegistration() {
 
   return (
     <section id="final-cta" className="bg-[var(--color-surface)] py-16 md:py-24">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-5 md:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        {/* Cột trái — giới thiệu & kênh liên hệ */}
-        <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-[var(--color-accent-soft)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-accent-dark)]">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+        {/* Tiêu đề dùng đúng khuôn của SectionHeading: nhãn, tiêu đề, gạch cam,
+            tất cả căn giữa phía trên lưới. Nhờ vậy hai cột bên dưới bắt đầu
+            cùng một mốc, không còn khoảng trắng ở đầu cột form. */}
+        <div className="text-center">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-[var(--color-accent-soft)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[var(--color-accent-dark)]">
             <Phone className="h-3.5 w-3.5" strokeWidth={2.5} />
             {c.badge}
           </span>
 
-          <h2 className="mt-5 text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-balance text-[var(--color-text)] sm:text-3xl lg:text-4xl">
+          <h2 className="text-[1.75rem] font-extrabold uppercase leading-[1.15] tracking-tight text-balance text-[var(--color-text)] sm:text-3xl md:text-[2rem] lg:text-4xl xl:text-[2.5rem]">
             {c.headingLead} <span className="text-[var(--color-accent)]">{c.headingAccent}</span>
           </h2>
 
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--color-muted)]">
+          <span className="mx-auto mt-5 block h-1.5 w-16 rounded-full bg-[var(--color-accent)]" />
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">
             {c.description}
           </p>
+        </div>
 
-          {/* Thẻ mascot */}
-          <div className="mt-8 flex items-center gap-5 rounded-2xl border border-[var(--color-border)] bg-white p-5">
+        <div className="mt-12 grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          {/* Cột trái — mascot & kênh liên hệ */}
+          <div>
+            {/* Thẻ mascot */}
+            <div className="flex items-center gap-5 rounded-2xl border border-[var(--color-border)] bg-white p-5">
             {c.mascot.image ? (
               <img
                 src={c.mascot.image}
@@ -320,6 +328,7 @@ export function ContactRegistration() {
               </p>
             </form>
           )}
+        </div>
         </div>
       </div>
     </section>

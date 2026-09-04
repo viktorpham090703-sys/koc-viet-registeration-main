@@ -15,10 +15,10 @@ export function BenefitsTable() {
               <table className="w-full border-collapse text-left">
                 <thead>
                   <tr className="border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] text-[var(--color-text)]">
-                    <th className="w-[38%] px-6 py-4 text-sm font-bold uppercase tracking-wide">
+                    <th className="w-[38%] px-6 py-4 text-center text-sm font-bold uppercase tracking-wide">
                       {whyJoin.columns[0]}
                     </th>
-                    <th className="px-6 py-4 text-sm font-bold uppercase tracking-wide">
+                    <th className="px-6 py-4 text-center text-sm font-bold uppercase tracking-wide">
                       {whyJoin.columns[1]}
                     </th>
                   </tr>

@@ -15,7 +15,7 @@ export function KocRanking() {
                 <thead>
                   <tr className="border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] text-[var(--color-text)]">
                     {ranking.columns.map((col) => (
-                      <th key={col} className="px-6 py-4 text-sm font-bold uppercase tracking-wide">
+                      <th key={col} className="px-6 py-4 text-center text-sm font-bold uppercase tracking-wide">
                         {col}
                       </th>
                     ))}

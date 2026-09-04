@@ -11,13 +11,13 @@ export function ComparisonTable() {
           <table className="w-full border-collapse text-left">
             <thead>
               <tr>
-                <th className="w-1/4 border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] px-6 py-4 text-sm font-bold uppercase tracking-wide text-[var(--color-text)]">
+                <th className="w-1/4 border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] px-6 py-4 text-center text-sm font-bold uppercase tracking-wide text-[var(--color-text)]">
                   {comparison.columns[0]}
                 </th>
-                <th className="border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] px-6 py-4 text-sm font-bold uppercase tracking-wide text-[var(--color-muted)]">
+                <th className="border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] px-6 py-4 text-center text-sm font-bold uppercase tracking-wide text-[var(--color-muted)]">
                   {comparison.columns[1]}
                 </th>
-                <th className="border-b border-[var(--color-accent)] bg-[var(--color-accent-soft)] px-6 py-4 text-sm font-bold uppercase tracking-wide text-[var(--color-accent-dark)]">
+                <th className="border-b border-[var(--color-accent)] bg-[var(--color-accent-soft)] px-6 py-4 text-center text-sm font-bold uppercase tracking-wide text-[var(--color-accent-dark)]">
                   {comparison.columns[2]}
                 </th>
               </tr>

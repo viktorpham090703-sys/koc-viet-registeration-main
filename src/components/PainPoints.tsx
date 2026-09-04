@@ -22,7 +22,7 @@ export function PainPoints() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5 text-lg font-bold text-[var(--color-text)]">
+            <p className="mt-8 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5 text-center text-lg font-bold text-[var(--color-text)]">
               {painPoints.closing}
             </p>
           </div>

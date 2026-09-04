@@ -21,20 +21,14 @@ export function Hero() {
           <p className="mt-6 max-w-lg text-lg font-normal leading-relaxed text-[var(--color-muted)] md:text-xl">
             {hero.description}
           </p>
-          <p className="mt-2 text-sm font-semibold uppercase tracking-[0.15em] text-[var(--color-muted)]/70">
-            {hero.tagline}
-          </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-9 flex justify-center">
             <a
               href="#final-cta"
               className="inline-block rounded-full bg-[var(--color-accent)] px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-[var(--color-accent)]/25 transition-colors hover:bg-[var(--color-accent-light)]"
             >
               {hero.cta}
             </a>
-            <span className="text-sm font-semibold text-[var(--color-muted)]">
-              {hero.brand}
-            </span>
           </div>
         </div>
 
