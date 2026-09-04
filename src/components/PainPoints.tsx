@@ -1,0 +1,42 @@
+import { SectionHeading } from './SectionHeading'
+import { painPoints } from '@/data/content'
+
+export function PainPoints() {
+  return (
+    <section id="pain-points" className="bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+          <div>
+            <SectionHeading heading={painPoints.heading} />
+            <ul className="mt-8 flex flex-col gap-4">
+              {painPoints.items.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-4 rounded-xl border border-[var(--color-border)] border-l-4 border-l-[var(--color-accent)] bg-[var(--color-surface)] p-5 transition-shadow hover:shadow-md hover:shadow-[rgba(16,20,38,0.06)]"
+                >
+                  <span className="text-lg font-medium leading-relaxed text-[var(--color-text)]">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5 text-lg font-bold text-[var(--color-text)]">
+              {painPoints.closing}
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)]">
+            <img
+              src={painPoints.image}
+              alt="Chủ doanh nghiệp căng thẳng vì quản lý booking KOC thủ công, rời rạc"
+              className="h-full w-full object-cover"
+              loading="lazy"
+              width={1400}
+              height={720}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

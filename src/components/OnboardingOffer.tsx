@@ -1,0 +1,58 @@
+import { SectionHeading } from './SectionHeading'
+import { onboardingOffer } from '@/data/content'
+
+export function OnboardingOffer() {
+  return (
+    <section id="onboarding-offer" className="bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-[1400px] px-5 md:px-8">
+        <SectionHeading heading={onboardingOffer.heading} />
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">
+          {onboardingOffer.intro}
+        </p>
+
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+          <div>
+            <div className="grid gap-5 sm:grid-cols-3">
+              {onboardingOffer.rows.map((row) => (
+                <div
+                  key={row[0]}
+                  className="flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-shadow hover:shadow-md hover:shadow-[rgba(16,20,38,0.06)]"
+                >
+                  <h3 className="text-lg font-extrabold uppercase tracking-tight text-[var(--color-accent)]">
+                    {row[0]}
+                  </h3>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
+                    {onboardingOffer.columns[1]}
+                  </p>
+                  <p className="mt-1 leading-relaxed text-[var(--color-text)]">{row[1]}</p>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
+                    {onboardingOffer.columns[2]}
+                  </p>
+                  <p className="mt-1 leading-relaxed text-[var(--color-text)]">{row[2]}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-8 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5 text-lg font-bold text-[var(--color-text)]">
+              {onboardingOffer.highlight}
+            </p>
+            <p className="mt-4 text-sm italic leading-relaxed text-[var(--color-muted)]">
+              {onboardingOffer.note}
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)]">
+            <img
+              src={onboardingOffer.image}
+              alt="Chính sách ưu đãi onboarding đổi review lấy ưu đãi của KOC Việt"
+              className="h-full w-full object-cover"
+              loading="lazy"
+              width={674}
+              height={474}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
