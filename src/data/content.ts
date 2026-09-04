@@ -30,7 +30,14 @@ export const hero = {
   tagline: 'Trusted Creator Platform',
   brand: 'KOC Việt — Trusted Creator Platform',
   cta: 'ĐĂNG KÝ NGAY',
-  image: '/images/hero-visual.jpg',
+  image: {
+    src: '/images/hero-visual.jpg',
+    alt: 'Nền tảng booking KOC Việt kết nối doanh nghiệp và nhà sáng tạo trên toàn quốc',
+    // Phải khớp kích thước thật của file để trình duyệt giữ đúng chỗ, tránh
+    // nhảy layout. Đổi file ảnh thì cập nhật lại hai số này.
+    width: 1599,
+    height: 984,
+  },
 }
 
 // SECTION 02 — PAIN POINTS (page 2)
@@ -117,7 +124,10 @@ export const moneyMaking = {
 
 // SECTION 05 — AI CLONE AVATAR (page 5)
 export const aiClone = {
-  heading: 'ĐIỂM NỔI BẬT: AI CLONE AVATAR — THU NHẬP THỤ ĐỘNG',
+  // \u00A0 = dấu cách không ngắt. Ghép "AI CLONE AVATAR" thành một khối
+  // không thể tách, để trình duyệt buộc phải xuống dòng ở dấu gạch ngang.
+  // Chữ giữ nguyên, chỉ đổi ký tự khoảng trắng.
+  heading: 'ĐIỂM NỔI BẬT: AI\u00A0CLONE\u00A0AVATAR — THU NHẬP THỤ ĐỘNG',
   items: [
     'Không cần bỏ công quay dựng: AI tạo video review/affiliate giống bạn tới 99%.',
     'Bạn giữ toàn quyền duyệt: chỉ đăng khi thấy phù hợp.',
@@ -281,39 +291,176 @@ export const finalCta = {
 
 export const logo = {
   src: '/images/koc-viet-logo.png',
+  // Bản chữ trắng, dùng trên nền tối (footer). Sinh ra từ file gốc:
+  // chữ đen -> trắng, giữ nguyên dấu play cam.
+  srcLight: '/images/koc-viet-logo-light.png',
   alt: 'KOC Việt — Trusted Creator Platform',
   width: 712,
   height: 166,
 }
 
 // FOOTER
-// Nhãn điều hướng/chính sách bên dưới là chữ giao diện, không lấy từ deck.
-// Mọi câu mô tả đều trích nguyên văn từ các mục đã có ở trên.
+// Nội dung lấy theo bản thiết kế tham chiếu do khách hàng cung cấp.
 export const footer = {
-  positioning: brand.positioning,
-  slogan: finalCta.slogan,
+  description:
+    'Nền tảng booking KOC/KOL trực tiếp, minh bạch, hiệu quả dành riêng cho Doanh nghiệp Việt. Kết nối hàng trăm nghìn nhà sáng tạo nội dung đã định danh cấp quốc gia.',
 
-  navHeading: 'Khám phá',
-
-  trustHeading: 'Pháp lý & Bảo mật',
-  badges: [
+  details: [
+    { label: 'Slogan', value: 'KOC Việt — Kết nối trực tiếp. Minh bạch. Hiệu quả.' },
+    { label: 'Đơn vị phát triển', value: 'NetViet TV (Tập đoàn Truyền thông NetViet)' },
     {
-      title: 'Định danh quốc gia',
-      text: 'Hồ sơ định danh qua Cổng kol.gov.vn — tăng uy tín, dễ nhận booking',
-    },
-    {
-      title: 'Bảo vệ dữ liệu',
-      text: 'tuân thủ Nghị định 13/2023, mã hóa dữ liệu, máy chủ tại Việt Nam.',
-    },
-    {
-      title: 'Bảo vệ thu nhập',
-      text: 'ký quỹ escrow, đối soát minh bạch, thanh toán đúng hạn.',
+      label: 'Trụ sở',
+      value: 'Tầng 2, Tòa nhà Chelsea Park, 116 Trung Kính, P. Yên Hòa, Cầu Giấy, Hà Nội',
     },
   ],
 
+  zalo: {
+    label: 'Zalo OA',
+    name: 'NetvietTV (Official Account ✓)',
+    qr: 'QR',
+    href: 'https://zalo.me/3746623500051373789',
+  },
+  hotline: {
+    label: 'Hotline',
+    value: '0813 487 686',
+    note: '(Hải Đức — Phòng Kinh doanh)',
+    href: 'tel:0813487686',
+  },
+  email: {
+    label: 'Email',
+    value: 'kocviet@netviettv.com.vn',
+    href: 'mailto:kocviet@netviettv.com.vn',
+  },
+
+  navHeading: 'ĐIỀU HƯỚNG NHANH',
+
+  legalHeading: 'PHÁP LÝ & TUÂN THỦ',
+  legal: [
+    {
+      title: 'Cổng quản lý KOL/KOC quốc gia',
+      text: 'Tích hợp hệ thống dữ liệu định danh theo chuẩn kol.gov.vn, hỗ trợ đối soát thuế và chứng từ minh bạch.',
+      tone: 'accent' as const,
+    },
+    {
+      title: 'Nghị định 13/2023/NĐ-CP',
+      text: 'Tuân thủ toàn diện quy định về bảo vệ dữ liệu cá nhân, hạ tầng máy chủ lưu trữ 100% tại Việt Nam.',
+      tone: 'green' as const,
+    },
+  ],
+
+  copyrightSuffix:
+    'KOC VIỆT. Phát triển và bảo chứng bởi NetViet TV & Cổng Quản Lý KOL Quốc Gia.',
+
+  // Chưa có URL thật cho 3 mục này.
   policies: [
-    { label: 'Điều khoản sử dụng', href: '#' },
+    { label: 'Cổng Doanh Nghiệp', href: '#' },
     { label: 'Chính sách bảo mật', href: '#' },
-    { label: 'Quy chế hoạt động', href: '#' },
+    { label: 'Điều khoản dịch vụ', href: '#' },
+  ],
+}
+
+// SECTION LIÊN HỆ / ĐĂNG KÝ (thay cho khối "Đăng ký ngay" cũ)
+// Nội dung lấy theo bản thiết kế tham chiếu do khách hàng cung cấp.
+export const contactSection = {
+  badge: 'KẾT NỐI TRỰC TIẾP',
+  headingLead: 'Liên Hệ Trực Tiếp',
+  headingAccent: 'KOC VIỆT',
+  description:
+    'Đăng ký tài khoản Doanh nghiệp hoặc nhận tư vấn chiến dịch trực tiếp từ đội ngũ chuyên gia hàng đầu.',
+
+  mascot: {
+    image: '/images/mascot.png' as string | null,
+    imageWidth: 360,
+    imageHeight: 569,
+    title: 'Mascot KOC VIỆT',
+    text: 'Đồng hành cùng hàng nghìn doanh nghiệp Việt chinh phục thị trường creator',
+    tags: '#ChinhDanh #MinhBach #HieuQua',
+  },
+
+  zalo: {
+    logo: '/images/zalo-logo.svg',
+    name: 'NetvietTV',
+    badge: 'Official Account',
+    meta: 'Truyền thông & Giải trí • Đã xác thực',
+    cta: 'Nhắn OA',
+    href: 'https://zalo.me/3746623500051373789',
+  },
+
+  channels: [
+    {
+      icon: 'phone' as const,
+      label: 'Hotline tư vấn doanh nghiệp',
+      value: '0813 487 686',
+      note: '(Hải Đức — Phòng Kinh doanh)',
+      href: 'tel:0813487686',
+    },
+    {
+      icon: 'mail' as const,
+      label: 'Email tiếp nhận yêu cầu',
+      value: 'kocviet@netviettv.com.vn',
+      href: 'mailto:kocviet@netviettv.com.vn',
+    },
+    {
+      icon: 'globe' as const,
+      label: 'Cổng đăng ký doanh nghiệp trực tuyến',
+      value: 'https://kocviet.com/doanh-nghiep',
+      href: 'https://kocviet.com/doanh-nghiep',
+      external: true,
+    },
+  ],
+
+  chips: [
+    'Đúng giọng địa phương',
+    'Gửi mẫu trong ngày',
+    'Quay video trong 24h',
+    'Chi phí Nano/Micro',
+    'Đã xác minh danh tính',
+    'Đang nhận booking',
+  ],
+
+  form: {
+    title: 'Đăng Ký Tài Khoản Doanh Nghiệp',
+    subtitle:
+      'Nhận tư vấn chiến dịch miễn phí và mở tài khoản Portal Doanh nghiệp trong ngày.',
+    company: { label: 'Tên Doanh Nghiệp / Nhãn Hàng', placeholder: 'VD: Tân Hiệp Phát, Vinamilk...' },
+    person: { label: 'Họ & Tên Người Phụ Trách', placeholder: 'VD: Nguyễn Văn A (Brand Manager)' },
+    phone: { label: 'Số Điện Thoại (Zalo)', placeholder: 'VD: 0987654321' },
+    email: { label: 'Email Doanh Nghiệp', placeholder: 'VD: marketing@congty.com' },
+    industry: { label: 'Ngành Hàng Kinh Doanh' },
+    budget: { label: 'Ngân Sách Dự Kiến' },
+    message: {
+      label: 'Yêu Cầu Cụ Thể Hoặc Kế Hoạch Đã Dự Toán',
+      placeholder:
+        'Mô tả sản phẩm cần quảng bá, số lượng KOC mong muốn, hoặc cấu hình đã tính ở bộ ROI Calculator...',
+    },
+    submit: 'Gửi Yêu Cầu & Nhận Tư Vấn Miễn Phí',
+    privacy: 'Thông tin được bảo mật 100% theo Nghị định 13/2023/NĐ-CP',
+    sending: 'Đang gửi...',
+    successTitle: 'Đã nhận yêu cầu của bạn!',
+    successText: 'Đội ngũ KOC Việt sẽ liên hệ lại trong thời gian sớm nhất.',
+    errorText: 'Gửi không thành công. Vui lòng gọi 0813 487 686 hoặc email kocviet@netviettv.com.vn.',
+  },
+
+  // Ảnh tham chiếu chỉ hiện 1 lựa chọn cho mỗi ô chọn; các mục còn lại là
+  // danh sách gợi ý thông dụng — cần khách hàng xác nhận lại.
+  industries: [
+    'F&B / Đồ uống / Thực phẩm',
+    'Mỹ phẩm / Làm đẹp',
+    'Thời trang / Phụ kiện',
+    'Mẹ & Bé',
+    'Công nghệ / Điện tử',
+    'Sức khỏe / Dược phẩm',
+    'Gia dụng / Nội thất',
+    'Du lịch / Dịch vụ',
+    'Giáo dục',
+    'Khác',
+  ],
+  budgets: [
+    'Dưới 50 Triệu VND',
+    '50 – 200 Triệu VND',
+    '200 – 500 Triệu VND',
+    '500 Triệu – 1 Tỷ VND',
+    'Trên 1 Tỷ VND',
+    'Chưa xác định',
   ],
 }

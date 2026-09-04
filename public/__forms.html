@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form detection</title>
+  </head>
+  <body>
+    <!--
+      Trang này không dành cho người dùng. Netlify quét HTML tĩnh lúc build để
+      đăng ký form; trang chính render phía server nên Netlify không thấy form
+      ở đó. Component ContactRegistration gửi POST vào chính đường dẫn này.
+      Khi đổi trường trong form thật, phải sửa danh sách dưới đây cho khớp.
+    -->
+    <form name="dang-ky-doanh-nghiep" data-netlify="true" hidden>
+      <input type="text" name="company" />
+      <input type="text" name="person" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="industry" />
+      <input type="text" name="budget" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

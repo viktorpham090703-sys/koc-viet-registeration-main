@@ -1,4 +1,5 @@
 import { SectionHeading } from './SectionHeading'
+import { SectionImage } from './SectionImage'
 import { whyJoin } from '@/data/content'
 
 export function BenefitsTable() {
@@ -60,16 +61,12 @@ export function BenefitsTable() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)] lg:sticky lg:top-24">
-            <img
-              src={whyJoin.image}
-              alt="Ứng dụng KOC Việt trên điện thoại hiển thị danh sách KOC theo ngành hàng và hạng"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              width={685}
-              height={520}
-            />
-          </div>
+          <SectionImage
+            src={whyJoin.image}
+            alt="Ứng dụng KOC Việt trên điện thoại hiển thị danh sách KOC theo ngành hàng và hạng"
+            width={1439}
+            height={1093}
+          />
         </div>
       </div>
     </section>

@@ -1,12 +1,13 @@
 import { SectionHeading } from './SectionHeading'
+import { SectionImage } from './SectionImage'
 import { onboardingOffer } from '@/data/content'
 
 export function OnboardingOffer() {
   return (
     <section id="onboarding-offer" className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
-        <SectionHeading heading={onboardingOffer.heading} />
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">
+        <SectionHeading heading={onboardingOffer.heading} align="center" />
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-[var(--color-muted)]">
           {onboardingOffer.intro}
         </p>
 
@@ -41,16 +42,12 @@ export function OnboardingOffer() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)]">
-            <img
-              src={onboardingOffer.image}
-              alt="Chính sách ưu đãi onboarding đổi review lấy ưu đãi của KOC Việt"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              width={674}
-              height={474}
-            />
-          </div>
+          <SectionImage
+            src={onboardingOffer.image}
+            alt="Chính sách ưu đãi onboarding đổi review lấy ưu đãi của KOC Việt"
+            width={1495}
+            height={1052}
+          />
         </div>
       </div>
     </section>

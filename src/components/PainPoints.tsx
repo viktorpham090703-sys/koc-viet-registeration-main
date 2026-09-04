@@ -1,14 +1,16 @@
 import { SectionHeading } from './SectionHeading'
+import { SectionImage } from './SectionImage'
 import { painPoints } from '@/data/content'
 
 export function PainPoints() {
   return (
     <section id="pain-points" className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+        <SectionHeading heading={painPoints.heading} align="center" />
+
+        <div className="mt-12 grid gap-12 md:grid-cols-2 md:items-start">
           <div>
-            <SectionHeading heading={painPoints.heading} />
-            <ul className="mt-8 flex flex-col gap-4">
+            <ul className="flex flex-col gap-4">
               {painPoints.items.map((item) => (
                 <li
                   key={item}
@@ -25,16 +27,12 @@ export function PainPoints() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)]">
-            <img
-              src={painPoints.image}
-              alt="Chủ doanh nghiệp căng thẳng vì quản lý booking KOC thủ công, rời rạc"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              width={1400}
-              height={720}
-            />
-          </div>
+          <SectionImage
+            src={painPoints.image}
+            alt="Chủ doanh nghiệp căng thẳng vì quản lý booking KOC thủ công, rời rạc"
+            width={1748}
+            height={900}
+          />
         </div>
       </div>
     </section>

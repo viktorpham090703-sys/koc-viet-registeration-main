@@ -10,7 +10,7 @@ import { KocRanking } from '@/components/KocRanking'
 import { OnboardingProcess } from '@/components/OnboardingProcess'
 import { ComparisonTable } from '@/components/ComparisonTable'
 import { ProtectionSection } from '@/components/ProtectionSection'
-import { FinalCTA } from '@/components/FinalCTA'
+import { ContactRegistration } from '@/components/ContactRegistration'
 import { Footer } from '@/components/Footer'
 
 export const Route = createFileRoute('/')({
@@ -32,7 +32,7 @@ function LandingPage() {
         <OnboardingProcess />
         <ComparisonTable />
         <ProtectionSection />
-        <FinalCTA />
+        <ContactRegistration />
       </main>
       <Footer />
     </>

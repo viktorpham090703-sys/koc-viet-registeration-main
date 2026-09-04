@@ -1,23 +1,20 @@
 import { SectionHeading } from './SectionHeading'
+import { SectionImage } from './SectionImage'
 import { moneyMaking } from '@/data/content'
 
 export function MoneyMakingMethods() {
   return (
     <section id="money-making" className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
-        <SectionHeading heading={moneyMaking.heading} />
+        <SectionHeading heading={moneyMaking.heading} align="center" />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)]">
-            <img
-              src={moneyMaking.image}
-              alt="Nhà sáng tạo KOC Việt livestream review sản phẩm"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              width={1105}
-              height={496}
-            />
-          </div>
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+          <SectionImage
+            src={moneyMaking.image}
+            alt="Nhà sáng tạo KOC Việt livestream review sản phẩm"
+            width={1871}
+            height={840}
+          />
 
           <ol className="flex flex-col gap-4">
             {moneyMaking.items.map((item, i) => (

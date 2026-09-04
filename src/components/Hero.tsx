@@ -11,7 +11,7 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white" />
       <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 px-5 md:grid-cols-2 md:gap-10 md:px-8">
         <div>
-          <Logo className="mb-8 h-12 md:h-14" />
+          <Logo className="mb-8 h-11 md:h-12" />
           <span className="mb-4 inline-block rounded-full bg-[var(--color-accent-soft)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent-dark)]">
             {hero.eyebrow}
           </span>
@@ -41,11 +41,13 @@ export function Hero() {
         <div className="relative">
           <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-xl shadow-[rgba(16,20,38,0.10)]">
             <img
-              src={hero.image}
-              alt="Nền tảng booking KOC Việt kết nối doanh nghiệp và nhà sáng tạo trên toàn quốc"
-              className="h-full w-full object-cover"
-              width={1058}
-              height={651}
+              src={hero.image.src}
+              alt={hero.image.alt}
+              width={hero.image.width}
+              height={hero.image.height}
+              /* h-auto: ảnh giữ đúng tỉ lệ gốc dù thay file kích thước khác,
+                 không bị cắt hay bóp méo. */
+              className="h-auto w-full"
             />
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { ShieldCheck, Lock, Wallet, UserCheck } from 'lucide-react'
+import { SectionImage } from './SectionImage'
 import { SectionHeading } from './SectionHeading'
 import { protection } from '@/data/content'
 
@@ -14,21 +15,18 @@ export function ProtectionSection() {
   return (
     <section id="protection" className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)]">
-            <img
-              src={protection.image}
-              alt="Cam kết bảo vệ dữ liệu, thu nhập và hình ảnh của KOC trên nền tảng KOC Việt"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              width={847}
-              height={437}
-            />
-          </div>
+        <SectionHeading heading={protection.heading} align="center" />
+
+        <div className="mt-12 grid gap-12 md:grid-cols-2 md:items-start">
+          <SectionImage
+            src={protection.image}
+            alt="Cam kết bảo vệ dữ liệu, thu nhập và hình ảnh của KOC trên nền tảng KOC Việt"
+            width={1748}
+            height={900}
+          />
 
           <div>
-            <SectionHeading heading={protection.heading} />
-            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               {protection.items.map((item, i) => {
                 const Icon = icons[i]
                 return (

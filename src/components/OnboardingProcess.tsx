@@ -1,4 +1,5 @@
 import { SectionHeading } from './SectionHeading'
+import { SectionImage } from './SectionImage'
 import { process } from '@/data/content'
 
 export function OnboardingProcess() {
@@ -7,7 +8,7 @@ export function OnboardingProcess() {
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={process.heading} align="center" />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-start">
           <ol className="flex flex-col gap-4">
             {process.steps.map((step, i) => (
               <li
@@ -22,16 +23,12 @@ export function OnboardingProcess() {
             ))}
           </ol>
 
-          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)]">
-            <img
-              src={process.image}
-              alt="Quy trình tham gia onboard nền tảng KOC Việt từng bước"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              width={1004}
-              height={518}
-            />
-          </div>
+          <SectionImage
+            src={process.image}
+            alt="Quy trình tham gia onboard nền tảng KOC Việt từng bước"
+            width={1748}
+            height={900}
+          />
         </div>
       </div>
     </section>

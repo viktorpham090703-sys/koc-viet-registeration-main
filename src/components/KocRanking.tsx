@@ -1,4 +1,5 @@
 import { SectionHeading } from './SectionHeading'
+import { SectionImage } from './SectionImage'
 import { ranking } from '@/data/content'
 
 export function KocRanking() {
@@ -55,16 +56,12 @@ export function KocRanking() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-xl shadow-[rgba(16,20,38,0.08)] lg:sticky lg:top-24">
-            <img
-              src={ranking.image}
-              alt="Nhà sáng tạo KOC theo dõi phân hạng và hiệu quả hoạt động trên nền tảng KOC Việt"
-              className="h-full w-full object-cover"
-              loading="lazy"
-              width={786}
-              height={518}
-            />
-          </div>
+          <SectionImage
+            src={ranking.image}
+            alt="Nhà sáng tạo KOC theo dõi phân hạng và hiệu quả hoạt động trên nền tảng KOC Việt"
+            width={1546}
+            height={1017}
+          />
         </div>
       </div>
     </section>
