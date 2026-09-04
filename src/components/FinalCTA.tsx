@@ -11,7 +11,7 @@ export function FinalCTA() {
       <div className="relative mx-auto flex max-w-[1000px] flex-col items-center px-5 text-center md:px-8">
         <Logo className="mb-8 h-12 md:h-14" />
 
-        <h2 className="text-4xl font-extrabold uppercase leading-tight text-[var(--color-text)] sm:text-5xl">
+        <h2 className="text-[1.75rem] sm:text-3xl md:text-[2rem] lg:text-4xl xl:text-[2.5rem] text-balance font-extrabold uppercase leading-[1.15] text-[var(--color-text)]">
           <span className="text-[var(--color-accent)]">{finalCta.heading}</span>
         </h2>
 
@@ -27,11 +27,6 @@ export function FinalCTA() {
         </a>
 
         <p className="mt-8 text-base font-semibold text-[var(--color-muted)]">{finalCta.contact}</p>
-
-        <div className="mt-12 w-full border-t border-[var(--color-border)] pt-8">
-          <p className="text-lg font-bold text-[var(--color-text)]">{finalCta.brandStatement}</p>
-          <p className="mt-2 text-base font-semibold text-[var(--color-accent)]">{finalCta.slogan}</p>
-        </div>
       </div>
     </section>
   )

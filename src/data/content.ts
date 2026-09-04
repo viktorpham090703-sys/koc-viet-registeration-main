@@ -288,18 +288,10 @@ export const logo = {
 
 // FOOTER
 // Nhãn điều hướng/chính sách bên dưới là chữ giao diện, không lấy từ deck.
-// Mọi câu mô tả đều trích nguyên văn từ các mục đã có ở trên, và các giá trị
-// liên hệ giữ nguyên ký hiệu "[•]" đúng như bản gốc — cần điền trước khi chạy thật.
+// Mọi câu mô tả đều trích nguyên văn từ các mục đã có ở trên.
 export const footer = {
   positioning: brand.positioning,
   slogan: finalCta.slogan,
-
-  contactHeading: 'Liên hệ',
-  contacts: [
-    { label: 'Tải app / đăng ký', value: '[•]' },
-    { label: 'Hotline', value: '[•]' },
-    { label: 'Zalo / Fanpage', value: '[•]' },
-  ],
 
   navHeading: 'Khám phá',
 
