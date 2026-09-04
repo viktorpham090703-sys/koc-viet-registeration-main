@@ -15,7 +15,7 @@ export function Hero() {
           <span className="mb-4 inline-block rounded-full bg-[var(--color-accent-soft)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent-dark)]">
             {hero.eyebrow}
           </span>
-          <h1 className="max-w-xl text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-[var(--color-text)] sm:text-5xl md:text-[3.4rem]">
+          <h1 className="max-w-xl text-[2.125rem] text-balance font-extrabold uppercase leading-[1.1] tracking-tight text-[var(--color-text)] sm:text-[2.5rem] lg:text-[2.75rem] xl:text-5xl">
             Gia Nhập <span className="text-[var(--color-accent)]">KOC Việt</span>
           </h1>
           <p className="mt-6 max-w-lg text-lg font-normal leading-relaxed text-[var(--color-muted)] md:text-xl">
