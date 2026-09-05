@@ -30,6 +30,9 @@ export const Route = createRootRoute({
       },
     ],
     links: [
+      // Khai báo hẳn thay vì để trình duyệt tự mò /favicon.ico, kèm ?v= để lần
+      // đổi icon nào cũng vượt được cache favicon vốn rất lì của trình duyệt.
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       { rel: 'stylesheet', href: FONT_HREF },
