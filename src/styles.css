@@ -24,6 +24,22 @@
   --color-border: rgba(16, 20, 38, 0.08);
   --color-border-strong: rgba(16, 20, 38, 0.14);
 
+  /* Quầng sáng cam sau ảnh — pha từ chính accent nên đổi accent là đổi cả glow.
+     Ba chặng loãng dần thay vì hai, để rìa tắt hẳn trước khi chạm mép hộp và
+     không để lộ đường viền tròn. */
+  --glow-core: color-mix(in srgb, var(--color-accent-light) 48%, transparent);
+  --glow-mid: color-mix(in srgb, var(--color-accent) 27%, transparent);
+  --glow-far: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  /* Gradient nội suy alpha premultiplied nên tắt về `transparent` không bị xám. */
+  --glow-edge: transparent;
+  --glow-lobe: color-mix(in srgb, var(--color-accent-light) 24%, transparent);
+
+  /* Ba hạng onboarding — mỗi hạng một màu riêng, lấy theo tên hạng
+     (đồng / bạc / vàng) và đều đủ tương phản trên nền sáng. */
+  --tier-bronze: #a3562a;
+  --tier-silver: #5c6b7f;
+  --tier-gold: #b07d0a;
+
   /* Pastel icon tiles */
   --tile-peach: #fff0e8;
   --tile-rose: #ffeef1;
@@ -51,9 +67,98 @@ body {
   color: var(--color-text);
   background: var(--color-background);
   -webkit-font-smoothing: antialiased;
+  /* Quầng sáng tràn ra ngoài mép ảnh; `clip` cắt phần thừa mà không biến body
+     thành vùng cuộn — nếu dùng `hidden` thì lg:sticky của ảnh sẽ hỏng. */
+  overflow-x: clip;
 }
 
 ::selection {
   background: var(--color-accent);
   color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Ambient glow phía sau ảnh của từng section (xem SectionImage.tsx).
+
+   Lớp ngoài `.section-image-glow` chỉ lo vị trí + parallax (JS ghi transform),
+   lớp trong `__core` lo phần nhìn thấy được (gradient, blur, hover). Tách hai
+   lớp để parallax và hover không tranh nhau cùng một thuộc tính transform.
+-------------------------------------------------------------------------- */
+
+.section-image-glow {
+  /* Nới theo % của chính hộp ảnh nên quầng tự co giãn theo tỉ lệ khung hình của
+     từng tấm (~1.28x ngang, ~1.4x dọc). Ngang nới ít hơn dọc để phần đuôi
+     gradient không tràn sang cột nội dung bên cạnh. */
+  --glow-spread-y: -20%;
+  --glow-spread-x: -14%;
+  --glow-blur: 46px;
+  --glow-strength: 0.85;
+
+  position: absolute;
+  inset: var(--glow-spread-y) var(--glow-spread-x);
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.section-image-glow__core {
+  position: absolute;
+  inset: 0;
+  opacity: var(--glow-strength);
+  filter: blur(var(--glow-blur));
+  /* Nhân màu với nền thay vì phủ lên: trên nền trắng kết quả y hệt như tô
+     thẳng, còn trên nền kem (--color-surface) thì quầng đậm lên đủ để thấy,
+     thay vì chìm hẳn vì nền đã sẵn màu cam nhạt. */
+  mix-blend-mode: multiply;
+  transform: scale(1);
+  transition:
+    opacity 550ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 550ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  background: radial-gradient(
+    ellipse 60% 56% at 50% 54%,
+    var(--glow-core) 0%,
+    var(--glow-mid) 34%,
+    var(--glow-far) 56%,
+    var(--glow-edge) 76%
+  );
+}
+
+/* Một lõi sáng thứ hai, lệch tâm và nhỏ hơn, để quầng không đối xứng hoàn hảo —
+   ánh sáng hắt ra thì không bao giờ là một hình tròn cân đối. */
+.section-image-glow__core::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 44% 38% at 34% 30%,
+    var(--glow-lobe) 0%,
+    var(--glow-edge) 68%
+  );
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover > .section-image-glow > .section-image-glow__core {
+    opacity: calc(var(--glow-strength) + 0.15);
+    transform: scale(1.08);
+  }
+}
+
+/* Máy yếu + màn nhỏ: blur mỏng hơn, quầng nhỏ hơn, nhạt hơn. */
+@media (max-width: 767px) {
+  .section-image-glow {
+    --glow-spread-y: -14%;
+    --glow-spread-x: -10%;
+    --glow-blur: 28px;
+    --glow-strength: 0.62;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-image-glow__core {
+    transition: none;
+  }
+
+  .group:hover > .section-image-glow > .section-image-glow__core {
+    transform: none;
+  }
 }

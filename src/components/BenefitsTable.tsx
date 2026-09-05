@@ -29,10 +29,10 @@ export function BenefitsTable() {
                       key={row[0]}
                       className={i % 2 === 0 ? 'bg-white' : 'bg-[var(--color-surface)]'}
                     >
-                      <td className="border-l-4 border-[var(--color-accent)] px-6 py-4 align-top font-bold text-[var(--color-text)]">
+                      <td className="border-l-4 border-[var(--color-accent)] px-6 py-4 align-top font-bold whitespace-pre-line text-[var(--color-text)]">
                         {row[0]}
                       </td>
-                      <td className="px-6 py-4 align-top text-[var(--color-muted)]">
+                      <td className="px-6 py-4 align-top whitespace-pre-line text-[var(--color-muted)]">
                         {row[1]}
                       </td>
                     </tr>

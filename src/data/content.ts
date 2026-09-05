@@ -22,14 +22,25 @@ export const nav = [
 ]
 
 // SECTION 01 — HERO (page 1)
+// Ngoại lệ có chủ đích với quy tắc "verbatim theo PDF" ở đầu file: phần chào
+// của hero được viết lại cho web (nói thẳng quyền lợi thay vì chỉ nêu định vị).
+// Mọi section còn lại vẫn giữ nguyên chữ của PDF.
 export const hero = {
-  eyebrow: 'GIA NHẬP KOC VIỆT',
-  heading: 'GIA NHẬP KOC VIỆT',
+  eyebrow: 'DÀNH RIÊNG CHO CREATOR & KOC',
+  // Tiêu đề tách ba mảnh để tô màu đúng phần thương hiệu ở giữa.
+  headingLead: 'GIA NHẬP',
+  headingBrand: 'KOC VIỆT',
+  headingTail: ': NHẬN BOOKING TRỰC TIẾP, THU NHẬP TƯƠNG XỨNG',
+  heading: 'GIA NHẬP KOC VIỆT: NHẬN BOOKING TRỰC TIẾP, THU NHẬP TƯƠNG XỨNG',
   description:
-    'Nền tảng Doanh nghiệp booking trực tiếp KOC, minh bạch, thu nhập bền vững',
+    'Nền tảng kết nối trực tiếp KOC với hàng ngàn nhãn hàng. Tự do thiết lập báo giá, nhận thanh toán an toàn qua Escrow, không qua trung gian.',
   tagline: 'Trusted Creator Platform',
   brand: 'KOC Việt — Trusted Creator Platform',
+  // `cta` là nhãn nút gọn dùng ở thanh header; hero dùng bản dài bên dưới.
   cta: 'ĐĂNG KÝ NGAY',
+  ctaPrimary: 'ĐĂNG KÝ NHẬN JOB NGAY',
+  ctaNote:
+    'Miễn phí đăng ký • Nhận ưu đãi Onboarding miễn phí phí nền tảng đến 24 tháng',
   image: {
     src: '/images/hero-visual.jpg',
     alt: 'Nền tảng booking KOC Việt kết nối doanh nghiệp và nhà sáng tạo trên toàn quốc',
@@ -44,7 +55,9 @@ export const hero = {
 export const painPoints = {
   heading: 'BẠN CÓ ĐANG GẶP NHỮNG VẤN ĐỀ NÀY?',
   items: [
-    'Thu nhập bị chia qua nhiều tầng trung gian, phụ thuộc agency?',
+    // \u00A0 giữ "phụ thuộc" liền khối nên dòng luôn ngắt sau dấu phẩy,
+    // không để rơi mỗi chữ "phụ" xuống cuối dòng trên. Chữ giữ nguyên.
+    'Thu nhập bị chia qua nhiều tầng trung gian, phụ\u00A0thuộc agency?',
     'Không sở hữu dữ liệu khách hàng của chính mình?',
     'Lo bị chậm hoặc quỵt thù lao khi nhận booking?',
     'Mất quá nhiều thời gian sản xuất nội dung?',
@@ -54,17 +67,20 @@ export const painPoints = {
 }
 
 // SECTION 03 — WHY JOIN KOC VIỆT (page 3)
+// Vài ô có \n: chỗ ngắt dòng do người viết chỉ định, bảng render chúng bằng
+// `whitespace-pre-line` từ breakpoint sm trở lên. Chữ không đổi, chỉ thêm chỗ
+// xuống dòng; bản thẻ trên mobile bỏ qua \n vì cột ở đó quá hẹp.
 export const whyJoin = {
   heading: 'VÌ SAO NÊN GIA NHẬP KOC VIỆT?',
   columns: ['Giá trị', 'Ý nghĩa với bạn'],
   rows: [
     [
       'Booking trực tiếp như Grap',
-      'Làm việc thẳng với doanh nghiệp, thu nhập tương xứng, không qua trung gian',
+      'Làm việc thẳng với doanh nghiệp,\nthu nhập tương xứng,\nkhông qua trung gian',
     ],
     [
-      'Sở hữu dữ liệu khách hàng',
-      'Data, network doanh nghiệp là của bạn — tài sản lâu dài, không lệ thuộc nền tảng, agency',
+      'Sở hữu dữ liệu\nkhách hàng',
+      'Data, network doanh nghiệp là của bạn\n— tài sản lâu dài, không lệ thuộc\nnền tảng, agency',
     ],
     [
       'Thanh toán an toàn (escrow)',
@@ -76,14 +92,14 @@ export const whyJoin = {
     ],
     [
       'AI Clone Avatar',
-      'Thu nhập thụ động không giới hạn — AI tạo video thay bạn, bạn chỉ duyệt & đăng',
+      'Thu nhập thụ động không giới hạn —\nAI tạo video thay bạn, bạn chỉ\nduyệt & đăng',
     ],
     [
       'Chính danh quốc gia',
       'Hồ sơ định danh qua Cổng kol.gov.vn — tăng uy tín, dễ nhận booking',
     ],
     [
-      'Được đào tạo & cấp chứng nhận',
+      'Được đào tạo &\ncấp chứng nhận',
       'Nâng kỹ năng livestream, bán hàng; hoạt động hợp pháp, chuyên nghiệp',
     ],
     [
@@ -127,12 +143,26 @@ export const aiClone = {
   // \u00A0 = dấu cách không ngắt. Ghép "AI CLONE AVATAR" thành một khối
   // không thể tách, để trình duyệt buộc phải xuống dòng ở dấu gạch ngang.
   // Chữ giữ nguyên, chỉ đổi ký tự khoảng trắng.
-  heading: 'ĐIỂM NỔI BẬT: AI\u00A0CLONE\u00A0AVATAR — THU NHẬP THỤ ĐỘNG',
+  // "Điểm nổi bật" đã nằm ở eyebrow phía trên nên bỏ khỏi tiêu đề, tránh lặp.
+  heading: 'AI\u00A0CLONE\u00A0AVATAR — THU NHẬP THỤ ĐỘNG',
+  // Bốn ý của PDF được viết lại thành cặp tiêu đề + diễn giải cho web.
   items: [
-    'Không cần bỏ công quay dựng: AI tạo video review/affiliate giống bạn tới 99%.',
-    'Bạn giữ toàn quyền duyệt: chỉ đăng khi thấy phù hợp.',
-    'Mô hình đã có nhiều KOL/KOC hợp tác và tạo doanh thu lớn.',
-    'Nhân nội dung nhiều lần, nhiều nhãn hàng — nguồn thu bền vững, không ảnh hưởng công việc sáng tạo nội dung hiện tại.',
+    {
+      title: 'Không Tốn Công Quay Dựng',
+      body: 'AI tự động tạo video review & affiliate chuẩn xác giống bạn tới 99%, tối ưu 100% thời gian sản xuất nội dung',
+    },
+    {
+      title: 'Giữ Toàn Quyền Duyệt & Gỡ Bỏ',
+      body: 'Nội dung chỉ được xuất bản khi bạn bấm \u201CApproved\u201D.\nCam kết bảo vệ quyền sở hữu hình ảnh cá nhân tuyệt đối',
+    },
+    {
+      title: 'Nhân Bản Doanh Thu Thụ Động',
+      body: 'Nhận hợp đồng từ nhiều nhãn hàng cùng lúc. Kiếm tiền đều đặn từ lượt click và hoa hồng affiliate ngay cả khi đang nghỉ ngơi',
+    },
+    {
+      title: 'Không Ảnh Hưởng Kênh Cá Nhân',
+      body: 'Duy trì nhịp sống và công việc sáng tạo riêng, mở rộng thêm một dòng tiền bền vững mà không bị kiệt sức',
+    },
   ],
   image: '/images/ai-clone.jpg',
 }
@@ -142,27 +172,28 @@ export const onboardingOffer = {
   heading: 'CHÍNH SÁCH ƯU ĐÃI ONBOARDING — "ĐỔI REVIEW LẤY ƯU ĐÃI"',
   intro:
     'Làm video review nền tảng đạt chuẩn → miễn phí chiết khấu nền tảng trong 12 - 24 tháng:',
-  columns: ['Gói', 'Điều kiện (bạn làm)', 'Quyền lợi'],
+  columns: ['Gói', 'Điều kiện', 'Quyền lợi'],
   rows: [
     [
-      'ĐỒNG (Starter)',
+      'ĐỒNG Starter',
       '01 video review đạt chuẩn',
       'Miễn phí nền tảng / 12 tháng',
     ],
     [
-      'BẠC (Growth)',
+      'BẠC Growth',
       '03 video + đạt mốc view',
       'Miễn phí / 18 tháng + ưu tiên nhận điều phối booking',
     ],
     [
-      'VÀNG (Ambassador)',
+      'VÀNG Ambassador',
       'Chuỗi review + cam kết đại sứ',
       'Miễn phí / 24 tháng + spotlight + hỗ trợ AI Clone',
     ],
   ],
   highlight:
-    'Bạn chỉ "trả" bằng nội dung review và bạn sẽ nhận 100% phí booking từ doanh nghiệp.',
-  note: 'Lưu ý, nếu thấy phù hợp hãy đăng ký để KOC Việt duyệt và liên hệ hỗ trợ.',
+    'Bạn chỉ "trả" bằng nội dung review — Nhận trọn vẹn 100% phí booking từ doanh nghiệp!',
+  highlightNote:
+    'Số lượng ưu đãi có hạn. KOC Việt sẽ liên hệ xét duyệt sau khi gửi thông tin.',
   image: '/images/onboarding-offer.jpg',
 }
 
@@ -402,9 +433,9 @@ export const contactSection = {
     },
     {
       icon: 'globe' as const,
-      label: 'Cổng đăng ký doanh nghiệp trực tuyến',
-      value: 'https://kocviet.com/doanh-nghiep',
-      href: 'https://kocviet.com/doanh-nghiep',
+      label: 'Cổng đăng ký KOC trực tuyến',
+      value: 'https://kocviet.com/koc',
+      href: 'https://kocviet.com/koc',
       external: true,
     },
   ],
@@ -418,49 +449,61 @@ export const contactSection = {
     'Đang nhận booking',
   ],
 
+  // Form onboard KOC/KOL — đặc tả trường (tên, loại, bắt buộc, option) lấy từ
+  // brief "FORM ONBOARD — KOC/KOL". Đổi trường ở đây thì phải sửa cả
+  // public/__forms.html cho khớp, nếu không Netlify sẽ bỏ dữ liệu của trường mới.
   form: {
-    title: 'Đăng Ký Tài Khoản Doanh Nghiệp',
+    title: 'Đăng Ký Tham Gia KOC Việt',
     subtitle:
-      'Nhận tư vấn chiến dịch miễn phí và mở tài khoản Portal Doanh nghiệp trong ngày.',
-    company: { label: 'Tên Doanh Nghiệp / Nhãn Hàng', placeholder: 'VD: Tân Hiệp Phát, Vinamilk...' },
-    person: { label: 'Họ & Tên Người Phụ Trách', placeholder: 'VD: Nguyễn Văn A (Brand Manager)' },
-    phone: { label: 'Số Điện Thoại (Zalo)', placeholder: 'VD: 0987654321' },
-    email: { label: 'Email Doanh Nghiệp', placeholder: 'VD: marketing@congty.com' },
-    industry: { label: 'Ngành Hàng Kinh Doanh' },
-    budget: { label: 'Ngân Sách Dự Kiến' },
-    message: {
-      label: 'Yêu Cầu Cụ Thể Hoặc Kế Hoạch Đã Dự Toán',
-      placeholder:
-        'Mô tả sản phẩm cần quảng bá, số lượng KOC mong muốn, hoặc cấu hình đã tính ở bộ ROI Calculator...',
+      'Điền thông tin để KOC Việt xét duyệt hồ sơ và liên hệ hỗ trợ onboarding.',
+    fullName: { label: 'Họ và tên', placeholder: 'vd. Nguyễn Thị A' },
+    phone: { label: 'Số điện thoại (Zalo)', placeholder: 'vd. 09xx xxx xxx' },
+    email: { label: 'Email', placeholder: 'vd. ban@email.com' },
+    channelUrl: {
+      label: 'Link kênh/trang cá nhân chính',
+      placeholder: 'vd. link TikTok/Facebook',
     },
-    submit: 'Gửi Yêu Cầu & Nhận Tư Vấn Miễn Phí',
+    followers: { label: 'Số lượng người theo dõi' },
+    region: { label: 'Khu vực' },
+    platforms: { label: 'Nền tảng hoạt động chính', hint: 'Chọn nhiều nền tảng' },
+    topics: { label: 'Lĩnh vực nội dung sở trường', hint: 'Chọn nhiều lĩnh vực' },
+    platformOther: { label: 'Khác', placeholder: 'Nhập nền tảng khác' },
+    source: { label: 'Biết đến KOC Việt qua đâu?' },
+    agreeTerms: 'Tôi đồng ý điều khoản & chính sách đổi review',
+    agreeContact: 'Tôi đồng ý được liên hệ tư vấn qua Zalo/điện thoại',
+    selectPlaceholder: '— Chọn —',
+    submit: 'Gửi Đăng Ký & Nhận Job',
     privacy: 'Thông tin được bảo mật 100% theo Nghị định 13/2023/NĐ-CP',
     sending: 'Đang gửi...',
-    successTitle: 'Đã nhận yêu cầu của bạn!',
-    successText: 'Đội ngũ KOC Việt sẽ liên hệ lại trong thời gian sớm nhất.',
+    successTitle: 'Đã nhận đăng ký của bạn!',
+    successText: 'Đội ngũ KOC Việt sẽ xét duyệt và liên hệ lại trong thời gian sớm nhất.',
     errorText: 'Gửi không thành công. Vui lòng gọi 0813 487 686 hoặc email kocviet@netviettv.com.vn.',
   },
 
-  // Ảnh tham chiếu chỉ hiện 1 lựa chọn cho mỗi ô chọn; các mục còn lại là
-  // danh sách gợi ý thông dụng — cần khách hàng xác nhận lại.
-  industries: [
-    'F&B / Đồ uống / Thực phẩm',
-    'Mỹ phẩm / Làm đẹp',
-    'Thời trang / Phụ kiện',
-    'Mẹ & Bé',
-    'Công nghệ / Điện tử',
-    'Sức khỏe / Dược phẩm',
-    'Gia dụng / Nội thất',
-    'Du lịch / Dịch vụ',
-    'Giáo dục',
+  followerRanges: [
+    'Dưới 10.000 (Nano)',
+    '10.000 – 50.000 (Micro)',
+    '50.000 – 200.000 (Mid)',
+    '200.000 – 1.000.000 (Macro)',
+    'Trên 1.000.000 (Mega)',
+  ],
+  regions: ['TP.HCM', 'Hà Nội', 'Tỉnh/thành khác'],
+  platforms: ['TikTok', 'Facebook', 'YouTube', 'Instagram', 'Livestream', 'Khác'],
+  topics: [
+    'Làm đẹp',
+    'Ẩm thực',
+    'Mẹ & bé',
+    'Công nghệ',
+    'Thời trang',
+    'Du lịch',
+    'Đời sống',
     'Khác',
   ],
-  budgets: [
-    'Dưới 50 Triệu VND',
-    '50 – 200 Triệu VND',
-    '200 – 500 Triệu VND',
-    '500 Triệu – 1 Tỷ VND',
-    'Trên 1 Tỷ VND',
-    'Chưa xác định',
+  sources: [
+    'Mạng xã hội',
+    'Webinar',
+    'Hội nghị/sự kiện',
+    'Bạn bè/KOC giới thiệu',
+    'Khác',
   ],
 }

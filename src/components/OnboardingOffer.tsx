@@ -2,12 +2,15 @@ import { SectionHeading } from './SectionHeading'
 import { SectionImage } from './SectionImage'
 import { onboardingOffer } from '@/data/content'
 
-/** Tách "ĐỒNG (Starter)" thành phần tiếng Việt và phần tiếng Anh trong ngoặc,
- *  để xuống dòng riêng. Chuỗi trong content.ts giữ nguyên. */
+/** Tách "ĐỒNG Starter" thành tên hạng tiếng Việt và nhãn tiếng Anh, để xuống
+ *  dòng riêng và tô màu riêng. Chuỗi trong content.ts giữ nguyên. */
 function splitTierName(name: string): [string, string] {
-  const i = name.indexOf('(')
-  return i === -1 ? [name, ''] : [name.slice(0, i).trim(), name.slice(i).trim()]
+  const i = name.indexOf(' ')
+  return i === -1 ? [name, ''] : [name.slice(0, i), name.slice(i + 1)]
 }
+
+/** Màu nhãn hạng, cùng thứ tự với onboardingOffer.rows. */
+const tierColors = ['var(--tier-bronze)', 'var(--tier-silver)', 'var(--tier-gold)']
 
 export function OnboardingOffer() {
   return (
@@ -21,7 +24,7 @@ export function OnboardingOffer() {
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
           <div>
             <div className="grid gap-5 sm:grid-cols-3">
-              {onboardingOffer.rows.map((row) => {
+              {onboardingOffer.rows.map((row, i) => {
                 const [tierVi, tierEn] = splitTierName(row[0])
                 return (
                 <div
@@ -30,7 +33,11 @@ export function OnboardingOffer() {
                 >
                   <h3 className="text-center text-lg font-extrabold uppercase tracking-tight text-[var(--color-accent)]">
                     <span className="block">{tierVi}</span>
-                    {tierEn && <span className="block">{tierEn}</span>}
+                    {tierEn && (
+                      <span className="block" style={{ color: tierColors[i] }}>
+                        {tierEn}
+                      </span>
+                    )}
                   </h3>
                   <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
                     {onboardingOffer.columns[1]}
@@ -45,12 +52,14 @@ export function OnboardingOffer() {
               })}
             </div>
 
-            <p className="mt-8 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5 text-lg font-bold text-[var(--color-text)]">
-              {onboardingOffer.highlight}
-            </p>
-            <p className="mt-4 text-sm italic leading-relaxed text-[var(--color-muted)]">
-              {onboardingOffer.note}
-            </p>
+            <div className="mt-8 flex flex-col gap-2 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5">
+              <p className="text-lg font-bold leading-snug text-[var(--color-text)]">
+                {onboardingOffer.highlight}
+              </p>
+              <p className="text-sm leading-relaxed text-[var(--color-muted)]">
+                {onboardingOffer.highlightNote}
+              </p>
+            </div>
           </div>
 
           <SectionImage

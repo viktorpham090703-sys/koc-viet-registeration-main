@@ -10,15 +10,22 @@
       đăng ký form; trang chính render phía server nên Netlify không thấy form
       ở đó. Component ContactRegistration gửi POST vào chính đường dẫn này.
       Khi đổi trường trong form thật, phải sửa danh sách dưới đây cho khớp.
+      platforms và topics là nhóm chọn nhiều: khai báo một input là đủ, Netlify
+      nhận nhiều giá trị gửi lên cùng một tên.
     -->
-    <form name="dang-ky-doanh-nghiep" data-netlify="true" hidden>
-      <input type="text" name="company" />
-      <input type="text" name="person" />
+    <form name="dang-ky-koc" data-netlify="true" hidden>
+      <input type="text" name="fullName" />
       <input type="tel" name="phone" />
       <input type="email" name="email" />
-      <input type="text" name="industry" />
-      <input type="text" name="budget" />
-      <textarea name="message"></textarea>
+      <input type="text" name="channelUrl" />
+      <input type="text" name="followers" />
+      <input type="text" name="region" />
+      <input type="text" name="platforms" />
+      <input type="text" name="topics" />
+      <input type="text" name="platformOther" />
+      <input type="text" name="source" />
+      <input type="text" name="agreeTerms" />
+      <input type="text" name="agreeContact" />
     </form>
   </body>
 </html>

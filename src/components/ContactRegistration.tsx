@@ -7,9 +7,11 @@ import {
   Send,
   ShieldCheck,
   Check,
+  ChevronDown,
   ExternalLink,
   CheckCircle2,
 } from 'lucide-react'
+import { MultiSelect } from './MultiSelect'
 import { contactSection as c } from '@/data/content'
 
 const channelIcons = { phone: Phone, mail: Mail, globe: Globe }
@@ -19,22 +21,89 @@ const channelTiles = {
   globe: 'bg-[var(--tile-lilac)] text-[#4d6bff]',
 }
 
+// Không kèm mt-2: khoảng cách với nhãn do thẻ bọc bên ngoài lo, nhờ vậy mũi
+// tên chevron căn giữa được theo đúng chiều cao ô.
 const FIELD =
-  'mt-2 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] outline-none transition-colors placeholder:text-[var(--color-muted)]/60 focus:border-[var(--color-accent)] focus:bg-white'
+  'w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] outline-none transition-colors placeholder:text-[var(--color-muted)]/60 focus:border-[var(--color-accent)] focus:bg-white'
+const INPUT = `${FIELD} mt-2`
 const LABEL = 'block text-sm font-semibold text-[var(--color-text)]'
 
 function Required() {
   return <span className="text-[var(--color-accent)]"> *</span>
 }
 
+/** Ô chọn một giá trị. Chevron tự vẽ để mọi ô chọn trong form — kể cả ô chọn
+ *  nhiều — dùng chung một mũi tên ở đúng một vị trí. */
+function SelectField({
+  id,
+  label,
+  options,
+}: {
+  id: string
+  label: string
+  options: readonly string[]
+}) {
+  return (
+    <div>
+      <label className={LABEL} htmlFor={id}>
+        {label}
+      </label>
+      <div className="relative mt-2">
+        <select id={id} name={id} className={`${FIELD} appearance-none pr-10`} defaultValue="">
+          <option value="">{c.form.selectPlaceholder}</option>
+          {options.map((o) => (
+            <option key={o}>{o}</option>
+          ))}
+        </select>
+        <ChevronDown
+          className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--color-muted)]"
+          strokeWidth={2}
+        />
+      </div>
+    </div>
+  )
+}
+
+/** Ô đồng ý bắt buộc. */
+function Consent({ name, label }: { name: string; label: string }) {
+  return (
+    <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[var(--color-text)]">
+      <input
+        type="checkbox"
+        name={name}
+        required
+        value="Có"
+        className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-accent)]"
+      />
+      <span>
+        {label}
+        <Required />
+      </span>
+    </label>
+  )
+}
+
 export function ContactRegistration() {
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
+  const [platforms, setPlatforms] = useState<string[]>([])
+  const [topics, setTopics] = useState<string[]>([])
+  const [platformOther, setPlatformOther] = useState('')
+  const otherPlatform = platforms.includes('Khác')
+
+  function togglePlatform(option: string) {
+    setPlatforms((prev) =>
+      prev.includes(option) ? prev.filter((v) => v !== option) : [...prev, option],
+    )
+    // Bỏ chọn "Khác" thì xoá luôn ô đã gõ, không để giá trị cũ lặng lẽ được
+    // gửi đi cùng biểu mẫu.
+    if (option === 'Khác' && otherPlatform) setPlatformOther('')
+  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setState('sending')
     const data = new FormData(event.currentTarget)
-    data.append('form-name', 'dang-ky-doanh-nghiep')
+    data.append('form-name', 'dang-ky-koc')
     try {
       const res = await fetch('/__forms.html', {
         method: 'POST',
@@ -219,29 +288,16 @@ export function ContactRegistration() {
             <form onSubmit={handleSubmit} className="mt-7" noValidate={false}>
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label className={LABEL} htmlFor="company">
-                    {c.form.company.label}
+                  <label className={LABEL} htmlFor="fullName">
+                    {c.form.fullName.label}
                     <Required />
                   </label>
                   <input
-                    id="company"
-                    name="company"
+                    id="fullName"
+                    name="fullName"
                     required
-                    placeholder={c.form.company.placeholder}
-                    className={FIELD}
-                  />
-                </div>
-                <div>
-                  <label className={LABEL} htmlFor="person">
-                    {c.form.person.label}
-                    <Required />
-                  </label>
-                  <input
-                    id="person"
-                    name="person"
-                    required
-                    placeholder={c.form.person.placeholder}
-                    className={FIELD}
+                    placeholder={c.form.fullName.placeholder}
+                    className={INPUT}
                   />
                 </div>
                 <div>
@@ -255,56 +311,106 @@ export function ContactRegistration() {
                     type="tel"
                     required
                     placeholder={c.form.phone.placeholder}
-                    className={FIELD}
+                    className={INPUT}
                   />
                 </div>
                 <div>
                   <label className={LABEL} htmlFor="email">
                     {c.form.email.label}
-                    <Required />
                   </label>
                   <input
                     id="email"
                     name="email"
                     type="email"
-                    required
                     placeholder={c.form.email.placeholder}
-                    className={FIELD}
+                    className={INPUT}
                   />
                 </div>
                 <div>
-                  <label className={LABEL} htmlFor="industry">
-                    {c.form.industry.label}
+                  <label className={LABEL} htmlFor="channelUrl">
+                    {c.form.channelUrl.label}
+                    <Required />
                   </label>
-                  <select id="industry" name="industry" className={FIELD} defaultValue={c.industries[0]}>
-                    {c.industries.map((o) => (
-                      <option key={o}>{o}</option>
-                    ))}
-                  </select>
+                  {/* type="url" bắt buộc có scheme; nhiều người dán "tiktok.com/@a"
+                      nên để type text và chỉ kiểm tra bằng pattern rộng. */}
+                  <input
+                    id="channelUrl"
+                    name="channelUrl"
+                    required
+                    inputMode="url"
+                    placeholder={c.form.channelUrl.placeholder}
+                    className={INPUT}
+                  />
                 </div>
+                <SelectField
+                  id="followers"
+                  label={c.form.followers.label}
+                  options={c.followerRanges}
+                />
+                <SelectField id="region" label={c.form.region.label} options={c.regions} />
+              </div>
+
+              {/* Hai ô chọn nhiều nằm cùng một hàng, mỗi ô nửa bề ngang. Nhãn
+                  và dòng gợi ý của hai bên khớp nhau vì cùng khuôn. */}
+              <div className="mt-5 grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label className={LABEL} htmlFor="budget">
-                    {c.form.budget.label}
-                  </label>
-                  <select id="budget" name="budget" className={FIELD} defaultValue={c.budgets[1]}>
-                    {c.budgets.map((o) => (
-                      <option key={o}>{o}</option>
-                    ))}
-                  </select>
+                  <MultiSelect
+                    name="platforms"
+                    label={c.form.platforms.label}
+                    hint={c.form.platforms.hint}
+                    placeholder={c.form.selectPlaceholder}
+                    options={c.platforms}
+                    value={platforms}
+                    onToggle={togglePlatform}
+                    fieldClassName={FIELD}
+                    labelClassName={LABEL}
+                  />
+
+                  {otherPlatform && (
+                    <div className="mt-4">
+                      <label className={LABEL} htmlFor="platformOther">
+                        {c.form.platformOther.label}
+                        <Required />
+                      </label>
+                      <input
+                        id="platformOther"
+                        name="platformOther"
+                        required
+                        value={platformOther}
+                        onChange={(e) => setPlatformOther(e.target.value)}
+                        placeholder={c.form.platformOther.placeholder}
+                        className={INPUT}
+                      />
+                    </div>
+                  )}
                 </div>
+
+                <MultiSelect
+                  name="topics"
+                  label={c.form.topics.label}
+                  hint={c.form.topics.hint}
+                  placeholder={c.form.selectPlaceholder}
+                  options={c.topics}
+                  value={topics}
+                  onToggle={(option) =>
+                    setTopics((prev) =>
+                      prev.includes(option)
+                        ? prev.filter((v) => v !== option)
+                        : [...prev, option],
+                    )
+                  }
+                  fieldClassName={FIELD}
+                  labelClassName={LABEL}
+                />
               </div>
 
               <div className="mt-5">
-                <label className={LABEL} htmlFor="message">
-                  {c.form.message.label}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  placeholder={c.form.message.placeholder}
-                  className={`${FIELD} resize-y`}
-                />
+                <SelectField id="source" label={c.form.source.label} options={c.sources} />
+              </div>
+
+              <div className="mt-6 flex flex-col gap-3">
+                <Consent name="agreeTerms" label={c.form.agreeTerms} />
+                <Consent name="agreeContact" label={c.form.agreeContact} />
               </div>
 
               <button
