@@ -9,18 +9,18 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,77,46,0.13),_transparent_60%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white" />
       <div className="relative mx-auto grid max-w-[1520px] items-center gap-12 px-4 md:grid-cols-[1fr_1.2fr] md:gap-10 md:px-6">
-        {/* Khối chữ giới hạn bề ngang bằng đúng tiêu đề: badge và cụm CTA lấy
-            chính khối này làm trục để căn giữa, tiêu đề và sapo vẫn căn trái. */}
+        {/* Khối chữ giới hạn bề ngang bằng đúng tiêu đề: cụm CTA lấy chính khối
+            này làm trục để căn giữa; badge, tiêu đề và sapo cùng căn trái. */}
         <div className="w-full max-w-[34rem]">
           {/* Không lặp lại logo ở đây: thanh header phía trên đã có sẵn. */}
-          <div className="mb-3.5 flex justify-center">
+          <div className="mb-3.5 flex justify-start">
             <span className="inline-block rounded-full bg-[var(--color-accent-soft)] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-accent-dark)]">
               {hero.eyebrow}
             </span>
           </div>
           {/* Tiêu đề dài hơn bản cũ nhiều nên thang chữ hạ xuống một bậc, đủ để
               vẫn là chữ to nhất trang mà không tràn thành năm dòng. */}
-          <h1 className="text-[1.5rem] font-extrabold uppercase leading-[1.1] tracking-tight text-[var(--color-text)] sm:text-[1.75rem] lg:text-[2rem] xl:text-[2.25rem]">
+          <h1 className="text-[1.5rem] font-extrabold uppercase leading-[1.5] tracking-tight text-[var(--color-text)] sm:text-[1.75rem] lg:text-[2rem] xl:text-[2.25rem]">
             <span className="block">
               {hero.headingLead}{' '}
               <span className="text-[var(--color-accent)]">{hero.headingBrand}</span>

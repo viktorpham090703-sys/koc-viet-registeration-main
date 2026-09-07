@@ -4,7 +4,7 @@
 
 export const brand = {
   name: 'KOC Việt',
-  descriptor: 'KOC Việt — Trusted Creator Platform',
+  descriptor: 'KOC Việt, Trusted Creator Platform',
   tagline: 'Trusted Creator Platform',
   positioning:
     'Nền tảng Doanh nghiệp booking trực tiếp KOC, minh bạch, thu nhập bền vững',
@@ -36,7 +36,7 @@ export const hero = {
   description:
     'Nền tảng kết nối trực tiếp KOC với hàng ngàn nhãn hàng. Tự do thiết lập báo giá, nhận thanh toán an toàn qua Escrow, không qua trung gian.',
   tagline: 'Trusted Creator Platform',
-  brand: 'KOC Việt — Trusted Creator Platform',
+  brand: 'KOC Việt, Trusted Creator Platform',
   // `cta` là nhãn nút gọn dùng ở thanh header; hero dùng bản dài bên dưới.
   cta: 'ĐĂNG KÝ NGAY',
   ctaPrimary: 'ĐĂNG KÝ NHẬN JOB NGAY',
@@ -84,11 +84,11 @@ export const whyJoin = {
     ],
     [
       'Sở hữu dữ liệu\nkhách hàng',
-      'Data, network doanh nghiệp là của bạn —\ntài sản lâu dài, không lệ thuộc nền tảng, agency',
+      'Data, network doanh nghiệp là của bạn,\ntài sản lâu dài, không lệ thuộc nền tảng, agency',
     ],
     [
       'Thanh toán an toàn (escrow)',
-      'Tiền được doanh nghiệp ký quỹ trước, xong việc là giải ngân ngay — không lo bị quỵt',
+      'Tiền được doanh nghiệp ký quỹ trước, xong việc là giải ngân ngay, không lo bị quỵt',
     ],
     [
       'Minh bạch doanh số',
@@ -96,11 +96,11 @@ export const whyJoin = {
     ],
     [
       'AI Clone Avatar',
-      'Thu nhập thụ động không giới hạn —\nAI tạo video thay bạn, bạn chỉ duyệt & đăng',
+      'Thu nhập thụ động không giới hạn,\nAI tạo video thay bạn, bạn chỉ duyệt & đăng',
     ],
     [
       'Chính danh quốc gia',
-      'Hồ sơ định danh qua Cổng kol.gov.vn —\ntăng uy tín, dễ nhận booking',
+      'Hồ sơ định danh qua Cổng kol.gov.vn,\ntăng uy tín, dễ nhận booking',
     ],
     [
       'Được đào tạo &\ncấp chứng nhận',
@@ -132,7 +132,7 @@ export const moneyMaking = {
     },
     {
       title: 'AI Clone Avatar (thu nhập thụ động)',
-      text: 'AI tái tạo hình ảnh/giọng nói của bạn (khi bạn cấp phép) để tạo video; bạn là người duyệt & đăng —\nkiếm tiền ngay cả khi nghỉ ngơi.',
+      text: 'AI tái tạo hình ảnh/giọng nói của bạn (khi bạn cấp phép) để tạo video; bạn là người duyệt & đăng,\nkiếm tiền ngay cả khi nghỉ ngơi.',
     },
     {
       title: 'Combo',
@@ -148,7 +148,7 @@ export const aiClone = {
   // không thể tách, để trình duyệt buộc phải xuống dòng ở dấu gạch ngang.
   // Chữ giữ nguyên, chỉ đổi ký tự khoảng trắng.
   // "Điểm nổi bật" đã nằm ở eyebrow phía trên nên bỏ khỏi tiêu đề, tránh lặp.
-  heading: 'AI\u00A0CLONE\u00A0AVATAR — THU NHẬP THỤ ĐỘNG',
+  heading: 'AI\u00A0CLONE\u00A0AVATAR - THU NHẬP THỤ ĐỘNG',
   // Câu phụ tách làm hai vế theo dấu phẩy. Mỗi vế được render trong một span
   // không cho ngắt dòng, nên từ màn hình vừa trở lên dòng luôn xuống đúng ở
   // dấu phẩy, không bao giờ cắt ngang giữa cụm.
@@ -180,7 +180,7 @@ export const aiClone = {
 
 // SECTION 06 — ONBOARDING OFFER (page 6)
 export const onboardingOffer = {
-  heading: 'CHÍNH SÁCH ƯU ĐÃI ONBOARDING — "ĐỔI REVIEW LẤY ƯU ĐÃI"',
+  heading: 'CHÍNH SÁCH ƯU ĐÃI ONBOARDING - "ĐỔI REVIEW LẤY ƯU ĐÃI"',
   intro:
     'Làm video review nền tảng đạt chuẩn → miễn phí chiết khấu nền tảng trong 12 - 24 tháng:',
   columns: ['Gói', 'Điều kiện', 'Quyền lợi'],
@@ -202,7 +202,7 @@ export const onboardingOffer = {
     ],
   ],
   highlight:
-    'Bạn chỉ "trả" bằng nội dung review — Nhận trọn vẹn 100% phí booking từ doanh nghiệp!',
+    'Bạn chỉ "trả" bằng nội dung review, Nhận trọn vẹn 100% phí booking từ doanh nghiệp!',
   highlightNote:
     'Số lượng ưu đãi có hạn. KOC Việt sẽ liên hệ xét duyệt sau khi gửi thông tin.',
   image: '/images/onboarding-offer.jpg',
@@ -240,7 +240,7 @@ export const ranking = {
     ],
   ],
   closing:
-    'Hạng được nâng theo hiệu quả hoạt động và độ uy tín — càng hoạt động tốt, quyền lợi càng lớn.',
+    'Hạng được nâng theo hiệu quả hoạt động và độ uy tín, càng hoạt động tốt, quyền lợi càng lớn.',
   image: '/images/ranking.jpg',
 }
 
@@ -249,7 +249,7 @@ export const process = {
   heading: 'QUY TRÌNH THAM GIA (ONBOARD)',
   steps: [
     'Xem hướng dẫn cài app(không tốn dung lượng điện thoại) /\nđăng ký tài khoản KOC.',
-    'Định danh (eKYC) — để chính danh.',
+    'Định danh (eKYC), để chính danh.',
     'Hoàn thiện hồ sơ năng lực (ngành hàng, kênh, ảnh bìa, số tài khoản nhận thanh toán).',
     'Nhận booking / gắn affiliate / kích hoạt AI Clone Avatar(tuỳ chọn).',
     'Đăng tải nội dung → nhận thanh toán minh bạch qua Ví nội bộ,\nrút về ngân hàng.',
@@ -325,11 +325,11 @@ export const protection = {
 // SECTION 11 — FINAL CTA (page 11)
 export const finalCta = {
   heading: 'ĐĂNG KÝ NGAY',
-  body: 'Tham gia KOC Việt hôm nay — miễn phí đăng ký, ưu đãi onboarding có hạn.',
+  body: 'Tham gia KOC Việt hôm nay, miễn phí đăng ký, ưu đãi onboarding có hạn.',
   contact: 'Tải app / đăng ký: [•] · Hotline: [•] · Zalo/Fanpage: [•]',
-  brandStatement: 'KOC Việt — Trusted Creator Platform.',
+  brandStatement: 'KOC Việt, Trusted Creator Platform.',
   slogan: 'Thu nhập tương xứng. Minh bạch. Bền vững.',
-  brandRepeat: 'KOC Việt — Trusted Creator Platform',
+  brandRepeat: 'KOC Việt, Trusted Creator Platform',
   image: '/images/final-cta.jpg',
 }
 
@@ -338,7 +338,7 @@ export const logo = {
   // Bản chữ trắng, dùng trên nền tối (footer). Sinh ra từ file gốc:
   // chữ đen -> trắng, giữ nguyên dấu play cam.
   srcLight: '/images/koc-viet-logo-light.png',
-  alt: 'KOC Việt — Trusted Creator Platform',
+  alt: 'KOC Việt, Trusted Creator Platform',
   width: 712,
   height: 166,
 }
@@ -350,7 +350,7 @@ export const footer = {
     'Nền tảng booking KOC/KOL trực tiếp, minh bạch, hiệu quả dành riêng cho Doanh nghiệp Việt. Kết nối hàng trăm nghìn nhà sáng tạo nội dung đã định danh cấp quốc gia.',
 
   details: [
-    { label: 'Slogan', value: 'KOC Việt — Kết nối trực tiếp. Minh bạch. Hiệu quả.' },
+    { label: 'Slogan', value: 'KOC Việt, Kết nối trực tiếp. Minh bạch. Hiệu quả.' },
     { label: 'Đơn vị phát triển', value: 'NetViet TV (Tập đoàn Truyền thông NetViet)' },
     {
       label: 'Trụ sở',
@@ -367,7 +367,7 @@ export const footer = {
   hotline: {
     label: 'Hotline',
     value: '0813 487 686',
-    note: '(Hải Đức — Phòng Kinh doanh)',
+    note: '(Hải Đức, Phòng Kinh doanh)',
     href: 'tel:0813487686',
   },
   email: {
@@ -435,7 +435,7 @@ export const contactSection = {
       icon: 'phone' as const,
       label: 'Hotline tư vấn doanh nghiệp',
       value: '0813 487 686',
-      note: '(Hải Đức — Phòng Kinh doanh)',
+      note: '(Hải Đức, Phòng Kinh doanh)',
       href: 'tel:0813487686',
     },
     {
@@ -469,12 +469,12 @@ export const contactSection = {
     title: 'Đăng Ký Tham Gia KOC Việt',
     subtitle:
       'Điền thông tin để KOC Việt xét duyệt hồ sơ và liên hệ hỗ trợ onboarding.',
-    fullName: { label: 'Họ và tên', placeholder: 'vd. Nguyễn Thị A' },
-    phone: { label: 'Số điện thoại (Zalo)', placeholder: 'vd. 09xx xxx xxx' },
-    email: { label: 'Email', placeholder: 'vd. ban@email.com' },
+    fullName: { label: 'Họ và tên', placeholder: 'VD: Nguyễn Thị A' },
+    phone: { label: 'Số điện thoại (Zalo)', placeholder: 'VD: 09xx xxx xxx' },
+    email: { label: 'Email', placeholder: 'VD: ban@email.com' },
     channelUrl: {
       label: 'Link kênh/trang cá nhân chính',
-      placeholder: 'vd. link TikTok/Facebook',
+      placeholder: 'VD: link TikTok/Facebook',
     },
     followers: { label: 'Số lượng người theo dõi' },
     region: { label: 'Khu vực' },
@@ -485,7 +485,7 @@ export const contactSection = {
     message: { label: 'Tin nhắn', placeholder: 'Nhập nội dung tin nhắn' },
     agreeTerms: 'Tôi đồng ý điều khoản & chính sách đổi review',
     agreeContact: 'Tôi đồng ý được liên hệ tư vấn qua Zalo/điện thoại',
-    selectPlaceholder: '— Chọn —',
+    selectPlaceholder: '- Chọn -',
     submit: 'Gửi Đăng Ký & Nhận Job',
     privacy: 'Thông tin được bảo mật 100% theo Nghị định 13/2023/NĐ-CP',
     sending: 'Đang gửi...',
