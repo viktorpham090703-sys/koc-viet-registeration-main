@@ -4,7 +4,7 @@ import { aiClone } from '@/data/content'
 
 export function AICloneSection() {
   return (
-    <section id="ai-clone" className="bg-[var(--color-surface)] py-16 md:py-24">
+    <section id="ai-clone" className="bg-[var(--veil-surface)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading eyebrow="Điểm nổi bật" heading={aiClone.heading} align="center" />
 

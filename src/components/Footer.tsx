@@ -7,7 +7,7 @@ const legalColor = { accent: 'text-[var(--color-accent)]', green: 'text-[#0f9d63
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] bg-white text-[var(--color-text)]">
+    <footer className="border-t border-[var(--color-border)] bg-[var(--veil-white)] text-[var(--color-text)]">
       <div className="mx-auto grid max-w-[1400px] items-start gap-12 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-[1.5fr_0.7fr_1.1fr] lg:gap-16 xl:gap-[72px]">
         {/* Cột 1 — thương hiệu & liên hệ */}
         <div>

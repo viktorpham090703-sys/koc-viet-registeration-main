@@ -13,7 +13,7 @@ const tiles = [
 
 export function ProtectionSection() {
   return (
-    <section id="protection" className="bg-white py-16 md:py-24">
+    <section id="protection" className="bg-[var(--veil-white)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={protection.heading} align="center" />
 

@@ -4,7 +4,7 @@ import { process } from '@/data/content'
 
 export function OnboardingProcess() {
   return (
-    <section id="process" className="bg-white py-16 md:py-24">
+    <section id="process" className="bg-[var(--veil-white)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={process.heading} align="center" />
 
@@ -18,7 +18,7 @@ export function OnboardingProcess() {
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)] text-lg font-extrabold text-white">
                   {i + 1}
                 </span>
-                <p className="mt-1 leading-relaxed text-[var(--color-muted)]">{step}</p>
+                <p className="mt-1 leading-relaxed whitespace-normal text-[var(--color-muted)] md:whitespace-pre-line">{step}</p>
               </li>
             ))}
           </ol>

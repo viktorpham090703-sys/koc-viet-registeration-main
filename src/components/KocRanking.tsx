@@ -4,7 +4,7 @@ import { ranking } from '@/data/content'
 
 export function KocRanking() {
   return (
-    <section id="ranking" className="bg-[var(--color-surface)] py-16 md:py-24">
+    <section id="ranking" className="bg-[var(--veil-surface)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={ranking.heading} align="center" />
 
@@ -31,13 +31,13 @@ export function KocRanking() {
                 <tbody>
                   {ranking.rows.map((row, i) => (
                     <tr key={row[0]} className={i % 2 === 0 ? 'bg-white' : 'bg-[var(--color-surface)]'}>
-                      <td className="whitespace-nowrap border-l-4 border-[var(--color-accent)] px-5 py-4 align-top font-bold text-[var(--color-text)] xl:px-6">
+                      <td className="whitespace-nowrap border-l-4 border-[var(--color-accent)] px-5 py-4 text-center align-top font-bold text-[var(--color-text)] xl:px-6">
                         {row[0]}
                       </td>
-                      <td className="whitespace-nowrap px-5 py-4 align-top text-[var(--color-muted)] xl:px-6">
+                      <td className="whitespace-nowrap px-5 py-4 text-center align-top text-[var(--color-muted)] xl:px-6">
                         {row[1]}
                       </td>
-                      <td className="px-5 py-4 align-top text-[var(--color-muted)] xl:px-6">{row[2]}</td>
+                      <td className="px-5 py-4 align-top whitespace-pre-line text-[var(--color-muted)] xl:px-6">{row[2]}</td>
                     </tr>
                   ))}
                 </tbody>

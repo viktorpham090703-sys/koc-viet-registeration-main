@@ -205,7 +205,7 @@ export function ContactRegistration() {
 
   return (
     <>
-    <section id="final-cta" className="bg-[var(--color-surface)] py-16 md:py-24">
+    <section id="final-cta" className="bg-[var(--veil-surface)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         {/* Tiêu đề dùng đúng khuôn của SectionHeading: nhãn, tiêu đề, gạch cam,
             tất cả căn giữa phía trên lưới. Nhờ vậy hai cột bên dưới bắt đầu
@@ -306,11 +306,18 @@ export function ContactRegistration() {
                 const Icon = channelIcons[ch.icon]
                 return (
                   <li key={ch.label} className="flex items-center gap-4">
-                    <span
-                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${channelTiles[ch.icon]}`}
+                    {/* Ô icon cũng là link: bấm icon điện thoại là quay số ngay,
+                        không bắt người dùng nhắm đúng dòng chữ bên cạnh. */}
+                    <a
+                      href={ch.href}
+                      {...('external' in ch && ch.external
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                      aria-label={`${ch.label}: ${ch.value}`}
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform hover:scale-105 motion-reduce:transition-none motion-reduce:hover:scale-100 ${channelTiles[ch.icon]}`}
                     >
-                      <Icon className="h-5 w-5" strokeWidth={2} />
-                    </span>
+                      <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+                    </a>
                     <div className="min-w-0">
                       <p className="text-xs text-[var(--color-muted)]">{ch.label}</p>
                       <a

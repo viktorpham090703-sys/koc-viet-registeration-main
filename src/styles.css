@@ -40,6 +40,13 @@
   --tier-silver: #5c6b7f;
   --tier-gold: #b07d0a;
 
+  /* Nền section dạng "màn voan": các giá trị rgba dưới đây khi chồng lên nền
+     trắng của body cho ra đúng màu cũ (#ffffff và #fdf7f3), nên giao diện không
+     đổi màu — chỉ khác là 45% lớp trang trí nền phía dưới lọt qua được.
+     Xem GlobalBackgroundEffects.tsx. */
+  --veil-white: rgba(255, 255, 255, 0.55);
+  --veil-surface: rgba(251, 240, 233, 0.55);
+
   /* Pastel icon tiles */
   --tile-peach: #fff0e8;
   --tile-rose: #ffeef1;
@@ -211,6 +218,129 @@ body {
   .koc-anim-fade,
   .koc-anim-card,
   .koc-anim-rise {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Lớp trang trí nền toàn trang (xem GlobalBackgroundEffects.tsx).
+
+   Ba layer parallax dịch theo `--koc-scroll` (0 → 1 theo tiến độ cuộn trang),
+   mỗi layer một quãng khác nhau để tạo chiều sâu. Quãng dịch cố ý nhỏ
+   (24–84px trên toàn trang) nên chuyển động chỉ thoáng thấy, không giật.
+-------------------------------------------------------------------------- */
+
+.koc-fx {
+  --koc-scroll: 0;
+  --koc-parallax-back: -24px;
+  --koc-parallax-mid: -52px;
+  --koc-parallax-front: -84px;
+
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* `contain` chặn mọi ảnh hưởng ra ngoài: không tạo thanh cuộn ngang dù shape
+     có tràn mép, và trình duyệt không phải tính lại layout của trang. */
+  contain: layout paint style;
+}
+
+.koc-fx-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.koc-fx-layer--back {
+  transform: translate3d(0, calc(var(--koc-scroll) * var(--koc-parallax-back)), 0);
+}
+
+.koc-fx-layer--mid {
+  transform: translate3d(0, calc(var(--koc-scroll) * var(--koc-parallax-mid)), 0);
+}
+
+.koc-fx-layer--front {
+  transform: translate3d(0, calc(var(--koc-scroll) * var(--koc-parallax-front)), 0);
+}
+
+.koc-fx-glow,
+.koc-fx-hex,
+.koc-fx-dots,
+.koc-fx-curve {
+  position: absolute;
+  pointer-events: none;
+}
+
+.koc-fx-hex {
+  /* Lục giác vẽ bằng clip-path nên không tốn thêm phần tử hay ảnh nền. */
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+.koc-fx-dots {
+  /* Mờ dần về các mép để cụm chấm không kết thúc bằng một cạnh vuông. */
+  mask-image: radial-gradient(circle at 50% 50%, #000 35%, transparent 72%);
+}
+
+.koc-fx-curve {
+  overflow: visible;
+}
+
+@keyframes koc-fx-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) rotate(4deg);
+  }
+}
+
+@keyframes koc-fx-sway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6px, -12px, 0) scale(1.03);
+  }
+}
+
+.koc-fx-float {
+  animation-name: koc-fx-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.koc-fx-sway {
+  animation-name: koc-fx-sway;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Màn nhỏ: shape nhỏ lại và nhạt hơn, biên độ trôi giảm một nửa. */
+@media (max-width: 767px) {
+  .koc-fx {
+    --koc-parallax-back: -14px;
+    --koc-parallax-mid: -28px;
+    --koc-parallax-front: -44px;
+    opacity: 0.62;
+  }
+
+  .koc-fx-float,
+  .koc-fx-sway {
+    animation-duration: 14s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .koc-fx-layer {
+    transform: none;
+    will-change: auto;
+  }
+
+  .koc-fx-float,
+  .koc-fx-sway {
     animation: none;
   }
 }

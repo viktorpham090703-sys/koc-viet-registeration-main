@@ -27,11 +27,12 @@ export const nav = [
 // Mọi section còn lại vẫn giữ nguyên chữ của PDF.
 export const hero = {
   eyebrow: 'DÀNH RIÊNG CHO CREATOR & KOC',
-  // Tiêu đề tách ba mảnh để tô màu đúng phần thương hiệu ở giữa.
+  // Tiêu đề tách mảnh để tô màu đúng phần thương hiệu ở dòng đầu; hai dòng
+  // sau là chỗ ngắt dòng do người viết chỉ định, không để trình duyệt tự ngắt.
   headingLead: 'GIA NHẬP',
   headingBrand: 'KOC VIỆT',
-  headingTail: ': NHẬN BOOKING TRỰC TIẾP, THU NHẬP TƯƠNG XỨNG',
-  heading: 'GIA NHẬP KOC VIỆT: NHẬN BOOKING TRỰC TIẾP, THU NHẬP TƯƠNG XỨNG',
+  headingLines: ['BOOKING TRỰC TIẾP,', 'THU NHẬP TƯƠNG XỨNG'],
+  heading: 'GIA NHẬP KOC VIỆT BOOKING TRỰC TIẾP, THU NHẬP TƯƠNG XỨNG',
   description:
     'Nền tảng kết nối trực tiếp KOC với hàng ngàn nhãn hàng. Tự do thiết lập báo giá, nhận thanh toán an toàn qua Escrow, không qua trung gian.',
   tagline: 'Trusted Creator Platform',
@@ -83,7 +84,7 @@ export const whyJoin = {
     ],
     [
       'Sở hữu dữ liệu\nkhách hàng',
-      'Data, network doanh nghiệp là của bạn\n— tài sản lâu dài, không lệ thuộc\nnền tảng, agency',
+      'Data, network doanh nghiệp là của bạn —\ntài sản lâu dài, không lệ thuộc nền tảng, agency',
     ],
     [
       'Thanh toán an toàn (escrow)',
@@ -91,23 +92,23 @@ export const whyJoin = {
     ],
     [
       'Minh bạch doanh số',
-      'Theo dõi click, đơn, doanh số, hoa hồng theo thời gian thực',
+      'Theo dõi click, đơn, doanh số,\nhoa hồng theo thời gian thực',
     ],
     [
       'AI Clone Avatar',
-      'Thu nhập thụ động không giới hạn —\nAI tạo video thay bạn, bạn chỉ\nduyệt & đăng',
+      'Thu nhập thụ động không giới hạn —\nAI tạo video thay bạn, bạn chỉ duyệt & đăng',
     ],
     [
       'Chính danh quốc gia',
-      'Hồ sơ định danh qua Cổng kol.gov.vn — tăng uy tín, dễ nhận booking',
+      'Hồ sơ định danh qua Cổng kol.gov.vn —\ntăng uy tín, dễ nhận booking',
     ],
     [
       'Được đào tạo &\ncấp chứng nhận',
-      'Nâng kỹ năng livestream, bán hàng; hoạt động hợp pháp, chuyên nghiệp',
+      'Nâng kỹ năng livestream, bán hàng;\nhoạt động hợp pháp, chuyên nghiệp',
     ],
     [
       'Bảo vệ hình ảnh & quyền lợi',
-      'Quyền duyệt nội dung, quyền gỡ bỏ; hình ảnh được bảo vệ',
+      'Quyền duyệt nội dung, quyền gỡ bỏ;\nhình ảnh được bảo vệ',
     ],
   ],
   image: '/images/why-join.jpg',
@@ -123,7 +124,7 @@ export const moneyMaking = {
     },
     {
       title: 'Booking Quảng cáo',
-      text: 'đăng nội dung quảng cáo theo brief, nhận phí cố định.',
+      text: 'đăng nội dung quảng cáo theo brief,\nnhận phí cố định.',
     },
     {
       title: 'Booking Affiliate',
@@ -131,7 +132,7 @@ export const moneyMaking = {
     },
     {
       title: 'AI Clone Avatar (thu nhập thụ động)',
-      text: 'AI tái tạo hình ảnh/giọng nói của bạn (khi bạn cấp phép) để tạo video; bạn là người duyệt & đăng — kiếm tiền ngay cả khi nghỉ ngơi.',
+      text: 'AI tái tạo hình ảnh/giọng nói của bạn (khi bạn cấp phép) để tạo video; bạn là người duyệt & đăng —\nkiếm tiền ngay cả khi nghỉ ngơi.',
     },
     {
       title: 'Combo',
@@ -215,7 +216,7 @@ export const ranking = {
     [
       'Nano',
       'Từ 1000 - 10.000',
-      'Nhận booking phù hợp, tích lũy uy tín, đào tạo cơ bản',
+      'Nhận booking phù hợp,\ntích lũy uy tín, đào tạo cơ bản',
     ],
     [
       'Micro',
@@ -225,7 +226,7 @@ export const ranking = {
     [
       'Mid',
       '50.000 – 200.000',
-      'Booking giá trị cao, ưu tiên điều phối, hỗ trợ AI Clone',
+      'Booking giá trị cao, ưu tiên điều phối,\nhỗ trợ AI Clone',
     ],
     [
       'Macro / KOL',
@@ -247,11 +248,11 @@ export const ranking = {
 export const process = {
   heading: 'QUY TRÌNH THAM GIA (ONBOARD)',
   steps: [
-    'Xem hướng dẫn cài app(không tốn dung lượng điện thoại) / đăng ký tài khoản KOC.',
+    'Xem hướng dẫn cài app(không tốn dung lượng điện thoại) /\nđăng ký tài khoản KOC.',
     'Định danh (eKYC) — để chính danh.',
     'Hoàn thiện hồ sơ năng lực (ngành hàng, kênh, ảnh bìa, số tài khoản nhận thanh toán).',
     'Nhận booking / gắn affiliate / kích hoạt AI Clone Avatar(tuỳ chọn).',
-    'Đăng tải nội dung → nhận thanh toán minh bạch qua Ví nội bộ, rút về ngân hàng.',
+    'Đăng tải nội dung → nhận thanh toán minh bạch qua Ví nội bộ,\nrút về ngân hàng.',
   ],
   image: '/images/process.jpg',
 }
@@ -353,7 +354,7 @@ export const footer = {
     { label: 'Đơn vị phát triển', value: 'NetViet TV (Tập đoàn Truyền thông NetViet)' },
     {
       label: 'Trụ sở',
-      value: 'Tầng 2, Tòa nhà Chelsea Park, 116 Trung Kính, P. Yên Hòa, Cầu Giấy, Hà Nội',
+      value: 'Tầng 2, Tòa Nhà Chelsea Park, 116 Trung Kính, P. Yên Hòa, Hà Nội',
     },
   ],
 
@@ -541,4 +542,6 @@ export const floatingContact = {
     logo: contactSection.zalo.logo,
   },
   phone: { label: `Gọi hotline ${footer.hotline.value}`, href: footer.hotline.href },
+  // Nút dẫn xuống form đăng ký ở cuối trang (section id="final-cta").
+  register: { label: 'Đăng Ký Tư Vấn', href: '#final-cta' },
 }

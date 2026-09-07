@@ -4,7 +4,7 @@ import { whyJoin } from '@/data/content'
 
 export function BenefitsTable() {
   return (
-    <section id="why-join" className="bg-[var(--color-surface)] py-16 md:py-24">
+    <section id="why-join" className="bg-[var(--veil-surface)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={whyJoin.heading} align="center" />
 
@@ -31,7 +31,7 @@ export function BenefitsTable() {
                       key={row[0]}
                       className={i % 2 === 0 ? 'bg-white' : 'bg-[var(--color-surface)]'}
                     >
-                      <td className="border-l-4 border-[var(--color-accent)] px-5 py-4 align-top font-bold whitespace-nowrap text-[var(--color-text)] xl:px-6">
+                      <td className="border-l-4 border-[var(--color-accent)] px-5 py-4 text-center align-top font-bold whitespace-nowrap text-[var(--color-text)] xl:px-6">
                         {row[0]}
                       </td>
                       <td className="px-5 py-4 align-top whitespace-pre-line text-[var(--color-muted)] xl:px-6">

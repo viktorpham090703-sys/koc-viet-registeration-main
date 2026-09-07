@@ -1,4 +1,4 @@
-import { Phone } from 'lucide-react'
+import { MessageSquarePlus, Phone } from 'lucide-react'
 import { floatingContact } from '@/data/content'
 
 /**
@@ -11,7 +11,7 @@ const BUTTON =
 export function FloatingContact() {
   return (
     <div
-      className="fixed flex flex-col gap-[15px]"
+      className="fixed flex flex-col items-end gap-[15px]"
       style={{ right: 24, bottom: 24, zIndex: 9999 }}
     >
       <a
@@ -45,6 +45,16 @@ export function FloatingContact() {
           strokeWidth={2}
           aria-hidden="true"
         />
+      </a>
+
+      {/* Nút dạng viên thuốc, rộng hơn hai nút tròn phía trên nên cả cụm căn
+          theo mép phải (items-end) để ba nút thẳng cạnh nhau. */}
+      <a
+        href={floatingContact.register.href}
+        className="group flex h-[54px] cursor-pointer items-center gap-2.5 rounded-full bg-[var(--color-accent)] px-5 text-sm font-bold whitespace-nowrap text-white shadow-[0_4px_14px_rgba(255,77,46,0.28)] transition-all duration-300 ease-out hover:scale-105 hover:bg-[var(--color-accent-light)] hover:shadow-[0_8px_22px_rgba(255,77,46,0.4)] motion-reduce:transition-none motion-reduce:hover:scale-100 sm:h-16 sm:px-6 sm:text-base"
+      >
+        <MessageSquarePlus className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" strokeWidth={2} aria-hidden="true" />
+        {floatingContact.register.label}
       </a>
     </div>
   )

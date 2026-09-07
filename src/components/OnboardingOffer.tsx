@@ -15,7 +15,7 @@ const tierColors = ['var(--tier-bronze)', 'var(--tier-silver)', 'var(--tier-gold
 
 export function OnboardingOffer() {
   return (
-    <section id="onboarding-offer" className="bg-white py-16 md:py-24">
+    <section id="onboarding-offer" className="bg-[var(--veil-white)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={onboardingOffer.heading} align="center" />
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-[var(--color-muted)]">

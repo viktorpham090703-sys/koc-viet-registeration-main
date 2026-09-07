@@ -4,7 +4,7 @@ import { moneyMaking } from '@/data/content'
 
 export function MoneyMakingMethods() {
   return (
-    <section id="money-making" className="bg-white py-16 md:py-24">
+    <section id="money-making" className="bg-[var(--veil-white)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={moneyMaking.heading} align="center" />
 
@@ -25,7 +25,7 @@ export function MoneyMakingMethods() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)] text-sm font-extrabold text-white">
                   {i + 1}
                 </span>
-                <p className="leading-relaxed text-[var(--color-muted)]">
+                <p className="leading-relaxed whitespace-normal text-[var(--color-muted)] md:whitespace-pre-line">
                   <span className="font-bold text-[var(--color-text)]">{item.title}: </span>
                   {item.text}
                 </p>
