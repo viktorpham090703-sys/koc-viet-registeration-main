@@ -12,7 +12,7 @@ export const brand = {
 
 export const nav = [
   { label: 'KOC Việt', href: '#hero' },
-  { label: 'Vì sao KOC Việt', href: '#why-join' },
+  { label: 'Vì sao chọn KOC Việt', href: '#why-join' },
   { label: 'Kiếm tiền', href: '#money-making' },
   { label: 'AI Clone', href: '#ai-clone' },
   { label: 'Ưu đãi', href: '#onboarding-offer' },
@@ -60,7 +60,7 @@ export const painPoints = {
     // không để rơi mỗi chữ "phụ" xuống cuối dòng trên. Chữ giữ nguyên.
     'Thu nhập bị chia qua nhiều tầng trung gian, phụ\u00A0thuộc agency?',
     'Không sở hữu dữ liệu khách hàng của chính mình?',
-    'Lo bị chậm hoặc quỵt thù lao khi nhận booking?',
+    'Lo bị chậm hoặc "quỵt" thù lao khi nhận booking?',
     'Mất quá nhiều thời gian sản xuất nội dung?',
   ],
   closing: 'KOC Việt sinh ra để giải quyết tất cả.',
