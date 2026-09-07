@@ -1,3 +1,4 @@
+import { Gift } from 'lucide-react'
 import { SectionHeading } from './SectionHeading'
 import { SectionImage } from './SectionImage'
 import { onboardingOffer } from '@/data/content'
@@ -21,15 +22,15 @@ export function OnboardingOffer() {
           {onboardingOffer.intro}
         </p>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div>
-            <div className="grid gap-5 sm:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-3 sm:grid-rows-[auto_auto_auto_auto_auto] sm:gap-y-0">
               {onboardingOffer.rows.map((row, i) => {
                 const [tierVi, tierEn] = splitTierName(row[0])
                 return (
                 <div
                   key={row[0]}
-                  className="flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-shadow hover:shadow-md hover:shadow-[rgba(16,20,38,0.06)]"
+                  className="flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-shadow hover:shadow-md hover:shadow-[rgba(16,20,38,0.06)] sm:row-span-5 sm:grid sm:grid-rows-subgrid"
                 >
                   <h3 className="text-center text-lg font-extrabold uppercase tracking-tight text-[var(--color-accent)]">
                     <span className="block">{tierVi}</span>
@@ -39,26 +40,31 @@ export function OnboardingOffer() {
                       </span>
                     )}
                   </h3>
-                  <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
+                  <p className="mt-5 text-[13px] font-bold uppercase tracking-[0.08em] text-[var(--color-text)]">
                     {onboardingOffer.columns[1]}
                   </p>
-                  <p className="mt-1 leading-relaxed text-[var(--color-text)]">{row[1]}</p>
-                  <p className="mt-4 text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
+                  <p className="mt-1.5 leading-relaxed text-[var(--color-text)]">{row[1]}</p>
+                  <p className="mt-5 text-[13px] font-bold uppercase tracking-[0.08em] text-[var(--color-text)]">
                     {onboardingOffer.columns[2]}
                   </p>
-                  <p className="mt-1 leading-relaxed text-[var(--color-text)]">{row[2]}</p>
+                  <p className="mt-1.5 leading-relaxed text-[var(--color-text)]">{row[2]}</p>
                 </div>
                 )
               })}
             </div>
 
-            <div className="mt-8 flex flex-col gap-2 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5">
-              <p className="text-lg font-bold leading-snug text-[var(--color-text)]">
-                {onboardingOffer.highlight}
-              </p>
-              <p className="text-sm leading-relaxed text-[var(--color-muted)]">
-                {onboardingOffer.highlightNote}
-              </p>
+            <div className="mt-8 flex items-center justify-center gap-4 rounded-2xl border-2 border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-6 text-center">
+              <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--color-accent)] text-white sm:flex">
+                <Gift className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
+              </span>
+              <div className="flex flex-col gap-2">
+                <p className="text-lg font-extrabold leading-snug text-[var(--color-text)]">
+                  {onboardingOffer.highlight}
+                </p>
+                <p className="text-sm leading-relaxed text-[var(--color-muted)]">
+                  {onboardingOffer.highlightNote}
+                </p>
+              </div>
             </div>
           </div>
 

@@ -8,6 +8,11 @@ export function AICloneSection() {
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading eyebrow="Điểm nổi bật" heading={aiClone.heading} align="center" />
 
+        <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-[var(--color-muted)] lg:text-lg">
+          <span className="md:whitespace-nowrap">{aiClone.subheadingParts[0]}</span>{' '}
+          <span className="md:whitespace-nowrap">{aiClone.subheadingParts[1]}</span>
+        </p>
+
         {/* items-start để thẻ bên phải cao theo nội dung của nó thay vì bị kéo
             bằng ảnh: có chênh lệch chiều cao thì lg:sticky của ảnh mới có quãng
             để trôi khi cuộn, giống ảnh ở mọi section khác. */}

@@ -8,14 +8,21 @@ export function KocRanking() {
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={ranking.heading} align="center" />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-start">
           <div>
             <div className="hidden overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-sm shadow-[rgba(16,20,38,0.04)] sm:block">
               <table className="w-full border-collapse text-left">
                 <thead>
                   <tr className="border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] text-[var(--color-text)]">
-                    {ranking.columns.map((col) => (
-                      <th key={col} className="px-6 py-4 text-center text-sm font-bold uppercase tracking-wide">
+                    {/* Hai cột đầu giữ nguyên một dòng; cột "Quyền lợi tiêu biểu"
+                        nhận hết phần rộng còn lại và tự ngắt dòng. */}
+                    {ranking.columns.map((col, i) => (
+                      <th
+                        key={col}
+                        className={`px-5 py-4 text-center text-sm font-bold uppercase tracking-wide xl:px-6 ${
+                          i < 2 ? 'whitespace-nowrap' : ''
+                        }`}
+                      >
                         {col}
                       </th>
                     ))}
@@ -24,11 +31,13 @@ export function KocRanking() {
                 <tbody>
                   {ranking.rows.map((row, i) => (
                     <tr key={row[0]} className={i % 2 === 0 ? 'bg-white' : 'bg-[var(--color-surface)]'}>
-                      <td className="border-l-4 border-[var(--color-accent)] px-6 py-4 align-top font-bold text-[var(--color-text)]">
+                      <td className="whitespace-nowrap border-l-4 border-[var(--color-accent)] px-5 py-4 align-top font-bold text-[var(--color-text)] xl:px-6">
                         {row[0]}
                       </td>
-                      <td className="px-6 py-4 align-top text-[var(--color-muted)]">{row[1]}</td>
-                      <td className="px-6 py-4 align-top text-[var(--color-muted)]">{row[2]}</td>
+                      <td className="whitespace-nowrap px-5 py-4 align-top text-[var(--color-muted)] xl:px-6">
+                        {row[1]}
+                      </td>
+                      <td className="px-5 py-4 align-top text-[var(--color-muted)] xl:px-6">{row[2]}</td>
                     </tr>
                   ))}
                 </tbody>

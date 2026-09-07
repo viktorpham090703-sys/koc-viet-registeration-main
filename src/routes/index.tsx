@@ -12,6 +12,7 @@ import { ComparisonTable } from '@/components/ComparisonTable'
 import { ProtectionSection } from '@/components/ProtectionSection'
 import { ContactRegistration } from '@/components/ContactRegistration'
 import { Footer } from '@/components/Footer'
+import { FloatingContact } from '@/components/FloatingContact'
 
 export const Route = createFileRoute('/')({
   component: LandingPage,
@@ -35,6 +36,7 @@ function LandingPage() {
         <ContactRegistration />
       </main>
       <Footer />
+      <FloatingContact />
     </>
   )
 }

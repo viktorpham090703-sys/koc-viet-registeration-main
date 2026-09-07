@@ -8,12 +8,12 @@ const legalColor = { accent: 'text-[var(--color-accent)]', green: 'text-[#0f9d63
 export function Footer() {
   return (
     <footer className="border-t border-[var(--color-border)] bg-white text-[var(--color-text)]">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-14 md:px-8 md:py-16 lg:grid-cols-[1.45fr_0.8fr_1.15fr] lg:gap-14">
+      <div className="mx-auto grid max-w-[1400px] items-start gap-12 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-[1.5fr_0.7fr_1.1fr] lg:gap-16 xl:gap-[72px]">
         {/* Cột 1 — thương hiệu & liên hệ */}
         <div>
           <Logo className="h-10" />
 
-          <p className="mt-6 max-w-md text-[13px] leading-relaxed text-[var(--color-muted)]">
+          <p className="mt-6 max-w-lg text-[13px] leading-relaxed text-[var(--color-muted)]">
             {footer.description}
           </p>
 
@@ -79,7 +79,7 @@ export function Footer() {
           <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--color-text)]">
             {footer.navHeading}
           </h3>
-          <ul className="mt-5 flex flex-col gap-3">
+          <ul className="mt-7 flex flex-col gap-5">
             {nav.slice(1).map((item) => (
               <li key={item.href}>
                 <a
@@ -98,7 +98,7 @@ export function Footer() {
           <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[var(--color-text)]">
             {footer.legalHeading}
           </h3>
-          <ul className="mt-5 flex flex-col gap-4">
+          <ul className="mt-7 flex flex-col gap-5">
             {footer.legal.map((item) => {
               const Icon = legalIcons[item.tone]
               return (
@@ -122,7 +122,7 @@ export function Footer() {
 
       {/* Thanh đáy */}
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
-        <div className="flex flex-col items-center gap-4 border-t border-[var(--color-border)] py-6 text-center md:flex-row md:justify-between md:text-left">
+        <div className="flex flex-col items-center gap-4 border-t border-[var(--color-border)] py-7 text-center md:flex-row md:justify-between md:text-left">
           <p className="text-xs text-[var(--color-muted)]">
             © {new Date().getFullYear()} {footer.copyrightSuffix}
           </p>

@@ -17,12 +17,12 @@ export function ProtectionSection() {
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={protection.heading} align="center" />
 
-        <div className="mt-12 grid gap-12 md:grid-cols-2 md:items-start">
+        <div className="mt-12 grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center">
           <SectionImage
             src={protection.image}
             alt="Cam kết bảo vệ dữ liệu, thu nhập và hình ảnh của KOC trên nền tảng KOC Việt"
-            width={1748}
-            height={900}
+            width={1600}
+            height={1195}
           />
 
           <div>

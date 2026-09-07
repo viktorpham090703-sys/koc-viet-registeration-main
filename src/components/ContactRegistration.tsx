@@ -9,9 +9,9 @@ import {
   Check,
   ChevronDown,
   ExternalLink,
-  CheckCircle2,
 } from 'lucide-react'
 import { MultiSelect } from './MultiSelect'
+import { SuccessModal } from './SuccessModal'
 import { contactSection as c } from '@/data/content'
 
 const channelIcons = { phone: Phone, mail: Mail, globe: Globe }
@@ -27,6 +27,25 @@ const FIELD =
   'w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] outline-none transition-colors placeholder:text-[var(--color-muted)]/60 focus:border-[var(--color-accent)] focus:bg-white'
 const INPUT = `${FIELD} mt-2`
 const LABEL = 'block text-sm font-semibold text-[var(--color-text)]'
+
+/** Web App của Google Apps Script, ghi thẳng vào Google Sheet. */
+const SHEET_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbyoKsdG8epgr_xbk-LRpNHeZnNYL6lLQ0VUzbtmV9vlOfTLz8QZhFW4PQkbwWmGKgo9/exec'
+
+/** 9 - 11 chữ số, cho phép +84, dấu cách, chấm, gạch và ngoặc khi gõ. */
+function isValidPhone(value: string) {
+  const digits = value.replace(/\D/g, '')
+  return /^[\d+().\s-]+$/.test(value) && digits.length >= 9 && digits.length <= 11
+}
+
+/** Chấp nhận cả link không có http:// vì phần lớn người dùng dán "tiktok.com/@a". */
+function isValidUrl(value: string) {
+  return /^(https?:\/\/)?([\w-]+\.)+[a-z]{2,}(\/\S*)?$/i.test(value)
+}
+
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)
+}
 
 function Required() {
   return <span className="text-[var(--color-accent)]"> *</span>
@@ -85,6 +104,7 @@ function Consent({ name, label }: { name: string; label: string }) {
 
 export function ContactRegistration() {
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
+  const [errorText, setErrorText] = useState(c.form.errorText)
   const [platforms, setPlatforms] = useState<string[]>([])
   const [topics, setTopics] = useState<string[]>([])
   const [platformOther, setPlatformOther] = useState('')
@@ -101,22 +121,90 @@ export function ContactRegistration() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    // Chốt chặn thứ hai bên cạnh nút bị vô hiệu hoá: phím Enter vẫn có thể
+    // kích hoạt submit khi đang gửi, dễ sinh dòng trùng trong Sheet.
+    if (state === 'sending') return
+
+    const form = event.currentTarget
+    const data = new FormData(form)
+    const text = (key: string) => String(data.get(key) ?? '').trim()
+
+    function fail(message: string) {
+      setErrorText(message)
+      setState('error')
+    }
+
+    // Các ô trống đã được thuộc tính required của trình duyệt chặn từ trước;
+    // ở đây chỉ kiểm tra định dạng.
+    const phone = text('phone')
+    if (!isValidPhone(phone)) return fail(c.form.errors.phone)
+
+    const channel = text('channelUrl')
+    if (!isValidUrl(channel)) return fail(c.form.errors.channelUrl)
+
+    const email = text('email')
+    if (email && !isValidEmail(email)) return fail(c.form.errors.email)
+
+    const consentReview = data.get('agreeTerms') !== null
+    const consentContact = data.get('agreeContact') !== null
+    if (!consentReview || !consentContact) return fail(c.form.errors.consent)
+
+    // "Khác" được ghép thêm nội dung người dùng gõ để Sheet không mất dữ liệu.
+    const selectedPlatforms = data.getAll('platforms').map(String)
+    const other = text('platformOther')
+    const platformList = other
+      ? selectedPlatforms.map((p) => (p === 'Khác' ? `Khác: ${other}` : p))
+      : selectedPlatforms
+
+    const payload = {
+      name: text('fullName'),
+      phone,
+      email,
+      channel,
+      followers: text('followers'),
+      region: text('region'),
+      platforms: platformList.join(', '),
+      content: data.getAll('topics').map(String).join(', '),
+      source: text('source'),
+      message: text('message'),
+      consentReview,
+      consentContact,
+    }
+
     setState('sending')
-    const data = new FormData(event.currentTarget)
-    data.append('form-name', 'dang-ky-koc')
     try {
-      const res = await fetch('/__forms.html', {
+      const res = await fetch(SHEET_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        // text/plain là kiểu nội dung "đơn giản" theo chuẩn CORS nên trình duyệt
+        // không gửi preflight OPTIONS — Apps Script không trả lời OPTIONS, dùng
+        // application/json là request sẽ hỏng. Apps Script vẫn đọc được chuỗi
+        // JSON này qua e.postData.contents.
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload),
+        credentials: 'omit',
+        redirect: 'follow',
       })
-      setState(res.ok ? 'done' : 'error')
+      const result = (await res.json().catch(() => null)) as { success?: boolean } | null
+
+      if (res.ok && result?.success) {
+        form.reset()
+        setPlatforms([])
+        setTopics([])
+        setPlatformOther('')
+        setState('done')
+      } else {
+        // Không reset form: dữ liệu người dùng vừa gõ được giữ nguyên.
+        setErrorText(c.form.errorText)
+        setState('error')
+      }
     } catch {
+      setErrorText(c.form.errorText)
       setState('error')
     }
   }
 
   return (
+    <>
     <section id="final-cta" className="bg-[var(--color-surface)] py-16 md:py-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         {/* Tiêu đề dùng đúng khuôn của SectionHeading: nhãn, tiêu đề, gạch cam,
@@ -276,16 +364,7 @@ export function ContactRegistration() {
             {c.form.subtitle}
           </p>
 
-          {state === 'done' ? (
-            <div className="mt-8 flex flex-col items-center rounded-xl bg-[var(--color-accent-soft)] px-6 py-12 text-center">
-              <CheckCircle2 className="h-12 w-12 text-[var(--color-accent)]" strokeWidth={2} />
-              <p className="mt-4 text-lg font-bold text-[var(--color-text)]">
-                {c.form.successTitle}
-              </p>
-              <p className="mt-1.5 text-sm text-[var(--color-muted)]">{c.form.successText}</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="mt-7" noValidate={false}>
+          <form onSubmit={handleSubmit} className="mt-7" noValidate={false}>
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label className={LABEL} htmlFor="fullName">
@@ -408,6 +487,22 @@ export function ContactRegistration() {
                 <SelectField id="source" label={c.form.source.label} options={c.sources} />
               </div>
 
+              {/* Ô nhiều dòng, chiếm trọn bề ngang lưới hai cột. Dùng chung khuôn
+                  INPUT với các ô một dòng nên viền, bo góc, cỡ chữ và trạng thái
+                  focus giống hệt; resize-y để chỉ kéo giãn theo chiều dọc. */}
+              <div className="mt-5">
+                <label className={LABEL} htmlFor="message">
+                  {c.form.message.label}
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  placeholder={c.form.message.placeholder}
+                  className={`${INPUT} min-h-[140px] resize-y`}
+                />
+              </div>
+
               <div className="mt-6 flex flex-col gap-3">
                 <Consent name="agreeTerms" label={c.form.agreeTerms} />
                 <Consent name="agreeContact" label={c.form.agreeContact} />
@@ -424,7 +519,7 @@ export function ContactRegistration() {
 
               {state === 'error' && (
                 <p className="mt-3 text-center text-sm font-semibold text-[var(--color-accent-dark)]">
-                  {c.form.errorText}
+                  {errorText}
                 </p>
               )}
 
@@ -433,10 +528,22 @@ export function ContactRegistration() {
                 {c.form.privacy}
               </p>
             </form>
-          )}
         </div>
         </div>
       </div>
     </section>
+
+      {/* Lớp thành công nằm ngoài <section>: position: fixed sẽ hỏng nếu tổ
+          tiên có transform/filter, để ngoài là chắc chắn phủ đúng viewport. */}
+      {state === 'done' && (
+        <SuccessModal
+          onBackToForm={() => setState('idle')}
+          onGoHome={() => {
+            setState('idle')
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+        />
+      )}
+    </>
   )
 }

@@ -63,6 +63,9 @@ export const painPoints = {
     'Mất quá nhiều thời gian sản xuất nội dung?',
   ],
   closing: 'KOC Việt sinh ra để giải quyết tất cả.',
+  // Mũi tên vẽ bằng icon nên nhãn giữ nguyên chữ, trình đọc màn hình không
+  // phải đọc ký tự \u2192.
+  closingCta: { label: 'Khám phá giải pháp ngay', href: '#why-join' },
   image: '/images/pain-points.jpg',
 }
 
@@ -145,6 +148,13 @@ export const aiClone = {
   // Chữ giữ nguyên, chỉ đổi ký tự khoảng trắng.
   // "Điểm nổi bật" đã nằm ở eyebrow phía trên nên bỏ khỏi tiêu đề, tránh lặp.
   heading: 'AI\u00A0CLONE\u00A0AVATAR — THU NHẬP THỤ ĐỘNG',
+  // Câu phụ tách làm hai vế theo dấu phẩy. Mỗi vế được render trong một span
+  // không cho ngắt dòng, nên từ màn hình vừa trở lên dòng luôn xuống đúng ở
+  // dấu phẩy, không bao giờ cắt ngang giữa cụm.
+  subheadingParts: [
+    'Công nghệ AI tái tạo hình ảnh & giọng nói giống bạn tới 99%,',
+    'giúp bạn nhận nhiều chiến dịch cùng lúc mà không mất thời gian quay dựng',
+  ],
   // Bốn ý của PDF được viết lại thành cặp tiêu đề + diễn giải cho web.
   items: [
     {
@@ -282,6 +292,8 @@ export const comparison = {
       'Real-time, rõ ràng',
     ],
   ],
+  // Nhãn huy hiệu trên đầu hai thẻ so sánh (không có trong bản PDF gốc).
+  badges: { old: 'Hạn chế', new: 'Giải pháp toàn diện' },
   image: '/images/comparison.jpg',
 }
 
@@ -469,15 +481,27 @@ export const contactSection = {
     topics: { label: 'Lĩnh vực nội dung sở trường', hint: 'Chọn nhiều lĩnh vực' },
     platformOther: { label: 'Khác', placeholder: 'Nhập nền tảng khác' },
     source: { label: 'Biết đến KOC Việt qua đâu?' },
+    message: { label: 'Tin nhắn', placeholder: 'Nhập nội dung tin nhắn' },
     agreeTerms: 'Tôi đồng ý điều khoản & chính sách đổi review',
     agreeContact: 'Tôi đồng ý được liên hệ tư vấn qua Zalo/điện thoại',
     selectPlaceholder: '— Chọn —',
     submit: 'Gửi Đăng Ký & Nhận Job',
     privacy: 'Thông tin được bảo mật 100% theo Nghị định 13/2023/NĐ-CP',
     sending: 'Đang gửi...',
-    successTitle: 'Đã nhận đăng ký của bạn!',
-    successText: 'Đội ngũ KOC Việt sẽ xét duyệt và liên hệ lại trong thời gian sớm nhất.',
-    errorText: 'Gửi không thành công. Vui lòng gọi 0813 487 686 hoặc email kocviet@netviettv.com.vn.',
+    successTitle: 'Đăng ký thành công!',
+    successHome: 'Về Trang Chủ',
+    successBack: 'Quay Lại Form Đăng Ký',
+    successText:
+      'Thông tin của bạn đã được gửi tới KOC Việt. Chúng tôi sẽ liên hệ với bạn sớm.',
+    errorText: 'Đã xảy ra lỗi. Vui lòng thử lại hoặc liên hệ KOC Việt qua Zalo/điện thoại.',
+    // Thông báo cho từng lỗi nhập liệu, hiện ở đúng chỗ dòng lỗi chung nên
+    // không phát sinh thành phần giao diện mới.
+    errors: {
+      phone: 'Số điện thoại chưa đúng định dạng. Vui lòng nhập 9 - 11 chữ số.',
+      channelUrl: 'Link kênh chưa hợp lệ. Ví dụ: tiktok.com/@tenkenh',
+      email: 'Email chưa đúng định dạng.',
+      consent: 'Vui lòng tích chọn cả hai ô đồng ý trước khi gửi.',
+    },
   },
 
   followerRanges: [
@@ -506,4 +530,15 @@ export const contactSection = {
     'Bạn bè/KOC giới thiệu',
     'Khác',
   ],
+}
+
+// NÚT LIÊN HỆ NỔI (góc dưới bên phải, cố định khi cuộn)
+// Không lặp lại số/link: lấy thẳng từ cấu hình đã có để không bị lệch nhau.
+export const floatingContact = {
+  zalo: {
+    label: 'Nhắn Zalo OA NetvietTV',
+    href: contactSection.zalo.href,
+    logo: contactSection.zalo.logo,
+  },
+  phone: { label: `Gọi hotline ${footer.hotline.value}`, href: footer.hotline.href },
 }

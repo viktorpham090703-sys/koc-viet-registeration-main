@@ -8,17 +8,19 @@ export function BenefitsTable() {
       <div className="mx-auto max-w-[1400px] px-5 md:px-8">
         <SectionHeading heading={whyJoin.heading} align="center" />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-start">
           <div>
             {/* Desktop / tablet table */}
             <div className="hidden overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-sm shadow-[rgba(16,20,38,0.04)] sm:block">
               <table className="w-full border-collapse text-left">
                 <thead>
                   <tr className="border-b border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] text-[var(--color-text)]">
-                    <th className="w-[38%] px-6 py-4 text-center text-sm font-bold uppercase tracking-wide">
+                    {/* Bỏ bề rộng cố định: cột "Giá trị" nay tự lấy đúng bề
+                        rộng của dòng dài nhất, phần còn lại thuộc về cột kia. */}
+                    <th className="px-5 py-4 text-center text-sm font-bold uppercase tracking-wide xl:px-6">
                       {whyJoin.columns[0]}
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-bold uppercase tracking-wide">
+                    <th className="px-5 py-4 text-center text-sm font-bold uppercase tracking-wide xl:px-6">
                       {whyJoin.columns[1]}
                     </th>
                   </tr>
@@ -29,10 +31,10 @@ export function BenefitsTable() {
                       key={row[0]}
                       className={i % 2 === 0 ? 'bg-white' : 'bg-[var(--color-surface)]'}
                     >
-                      <td className="border-l-4 border-[var(--color-accent)] px-6 py-4 align-top font-bold whitespace-pre-line text-[var(--color-text)]">
+                      <td className="border-l-4 border-[var(--color-accent)] px-5 py-4 align-top font-bold whitespace-nowrap text-[var(--color-text)] xl:px-6">
                         {row[0]}
                       </td>
-                      <td className="px-6 py-4 align-top whitespace-pre-line text-[var(--color-muted)]">
+                      <td className="px-5 py-4 align-top whitespace-pre-line text-[var(--color-muted)] xl:px-6">
                         {row[1]}
                       </td>
                     </tr>

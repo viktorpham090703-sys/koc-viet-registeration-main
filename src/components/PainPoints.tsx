@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react'
 import { SectionHeading } from './SectionHeading'
 import { SectionImage } from './SectionImage'
 import { painPoints } from '@/data/content'
@@ -22,9 +23,18 @@ export function PainPoints() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 rounded-xl border border-[var(--color-accent-soft-strong)] bg-[var(--color-accent-soft)] px-6 py-5 text-center text-lg font-bold text-[var(--color-text)]">
-              {painPoints.closing}
-            </p>
+            {/* Viền giữ lại (đổi sang cùng màu nền) để hộp không đổi kích thước
+                so với bản trước — chỉ đổi màu, chữ và thêm nút. */}
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 rounded-xl border border-[var(--color-accent)] bg-[var(--color-accent)] px-6 py-5 text-center sm:flex-row sm:gap-5">
+              <p className="text-lg font-extrabold text-white">{painPoints.closing}</p>
+              <a
+                href={painPoints.closingCta.href}
+                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold whitespace-nowrap text-[var(--color-accent)] shadow-sm transition-colors hover:bg-[var(--color-accent-soft)]"
+              >
+                {painPoints.closingCta.label}
+                <ArrowRight className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
           <SectionImage
