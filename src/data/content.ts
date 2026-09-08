@@ -15,7 +15,6 @@ export const nav = [
   { label: 'Vì sao chọn KOC Việt', href: '#why-join' },
   { label: 'Kiếm tiền', href: '#money-making' },
   { label: 'AI Clone', href: '#ai-clone' },
-  { label: 'Ưu đãi', href: '#onboarding-offer' },
   { label: 'Phân hạng KOC', href: '#ranking' },
   { label: 'Quy trình', href: '#process' },
   { label: 'Bảo vệ', href: '#protection' },
@@ -176,36 +175,6 @@ export const aiClone = {
     },
   ],
   image: '/images/ai-clone.jpg',
-}
-
-// SECTION 06 — ONBOARDING OFFER (page 6)
-export const onboardingOffer = {
-  heading: 'CHÍNH SÁCH ƯU ĐÃI ONBOARDING - "ĐỔI REVIEW LẤY ƯU ĐÃI"',
-  intro:
-    'Làm video review nền tảng đạt chuẩn → miễn phí chiết khấu nền tảng trong 12 - 24 tháng:',
-  columns: ['Gói', 'Điều kiện', 'Quyền lợi'],
-  rows: [
-    [
-      'ĐỒNG Starter',
-      '01 video review đạt chuẩn',
-      'Miễn phí nền tảng / 12 tháng',
-    ],
-    [
-      'BẠC Growth',
-      '03 video + đạt mốc view',
-      'Miễn phí / 18 tháng + ưu tiên nhận điều phối booking',
-    ],
-    [
-      'VÀNG Ambassador',
-      'Chuỗi review + cam kết đại sứ',
-      'Miễn phí / 24 tháng + spotlight + hỗ trợ AI Clone',
-    ],
-  ],
-  highlight:
-    'Bạn chỉ "trả" bằng nội dung review, Nhận trọn vẹn 100% phí booking từ doanh nghiệp!',
-  highlightNote:
-    'Số lượng ưu đãi có hạn. KOC Việt sẽ liên hệ xét duyệt sau khi gửi thông tin.',
-  image: '/images/onboarding-offer.jpg',
 }
 
 // SECTION 07 — KOC RANKING (page 7)

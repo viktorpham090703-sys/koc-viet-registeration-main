@@ -5,7 +5,6 @@ import { PainPoints } from '@/components/PainPoints'
 import { BenefitsTable } from '@/components/BenefitsTable'
 import { MoneyMakingMethods } from '@/components/MoneyMakingMethods'
 import { AICloneSection } from '@/components/AICloneSection'
-import { OnboardingOffer } from '@/components/OnboardingOffer'
 import { KocRanking } from '@/components/KocRanking'
 import { OnboardingProcess } from '@/components/OnboardingProcess'
 import { ComparisonTable } from '@/components/ComparisonTable'
@@ -33,7 +32,6 @@ function LandingPage() {
           <BenefitsTable />
           <MoneyMakingMethods />
           <AICloneSection />
-          <OnboardingOffer />
           <KocRanking />
           <OnboardingProcess />
           <ComparisonTable />
