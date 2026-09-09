@@ -78,7 +78,7 @@ export const whyJoin = {
   columns: ['Giá trị', 'Ý nghĩa với bạn'],
   rows: [
     [
-      'Booking trực tiếp như Grap',
+      'Booking trực tiếp',
       'Làm việc thẳng với doanh nghiệp,\nthu nhập tương xứng,\nkhông qua trung gian',
     ],
     [
