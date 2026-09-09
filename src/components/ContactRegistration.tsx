@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import {
   Phone,
   Mail,
@@ -13,6 +13,7 @@ import {
 import { MultiSelect } from './MultiSelect'
 import { SuccessModal } from './SuccessModal'
 import { contactSection as c } from '@/data/content'
+import { trackPixelEvent } from '@/lib/metaPixel'
 
 const channelIcons = { phone: Phone, mail: Mail, globe: Globe }
 const channelTiles = {
@@ -108,6 +109,10 @@ export function ContactRegistration() {
   const [platforms, setPlatforms] = useState<string[]>([])
   const [topics, setTopics] = useState<string[]>([])
   const [platformOther, setPlatformOther] = useState('')
+  // Đóng lớp thành công sẽ đưa state về 'idle' nên biểu mẫu gửi lại được;
+  // cờ này giữ cho mỗi lượt tải trang chỉ báo tối đa một chuyển đổi, trong
+  // khi Sheet vẫn nhận đủ mọi lần gửi. Dùng ref để không kích hoạt render.
+  const conversionReported = useRef(false)
   const otherPlatform = platforms.includes('Khác')
 
   function togglePlatform(option: string) {
@@ -192,6 +197,12 @@ export function ContactRegistration() {
         setTopics([])
         setPlatformOther('')
         setState('done')
+        // Chỉ tới đây backend mới xác nhận ghi thành công, nên đây là điểm
+        // duy nhất được phép báo chuyển đổi.
+        if (!conversionReported.current) {
+          conversionReported.current = true
+          trackPixelEvent('CompleteRegistration')
+        }
       } else {
         // Không reset form: dữ liệu người dùng vừa gõ được giữ nguyên.
         setErrorText(c.form.errorText)

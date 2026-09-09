@@ -1,4 +1,5 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { META_PIXEL_ID } from '@/lib/metaPixel'
 
 
 import '../styles.css'
@@ -9,8 +10,6 @@ import '../styles.css'
 // made Vietnamese diacritics fall back to a serif face in production builds.
 const FONT_HREF =
   'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap'
-
-const META_PIXEL_ID = '2102457530387519'
 
 const META_PIXEL_SCRIPT = `
 !function(f,b,e,v,n,t,s)
