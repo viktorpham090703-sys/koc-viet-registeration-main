@@ -48,6 +48,19 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)
 }
 
+/** Nguồn lead lấy từ UTM trên URL, không có thì coi như khách vào thẳng.
+ *  Đọc ngay lúc submit: mọi liên kết trong trang đều là anchor (#...) nên
+ *  query string của phiên truy cập vẫn còn nguyên trên thanh địa chỉ. */
+function readLeadSource() {
+  const params = new URLSearchParams(window.location.search)
+  const pick = (key: string) => params.get(key)?.trim() || 'direct'
+  return {
+    utmSource: pick('utm_source'),
+    utmMedium: pick('utm_medium'),
+    utmCampaign: pick('utm_campaign'),
+  }
+}
+
 function Required() {
   return <span className="text-[var(--color-accent)]"> *</span>
 }
@@ -174,6 +187,8 @@ export function ContactRegistration() {
       message: text('message'),
       consentReview,
       consentContact,
+      // Ba khoá bổ sung cho cột Nguồn / Loại nguồn / Chiến dịch trong Sheet.
+      ...readLeadSource(),
     }
 
     setState('sending')
